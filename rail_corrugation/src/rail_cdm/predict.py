@@ -10,6 +10,24 @@ from rail_cdm.features import extract_feature_table
 from rail_cdm.io import ALLOWED_LABELS, list_csv_files
 
 
+def validate_prediction_output(output: pd.DataFrame, expected_filenames: list[str]) -> None:
+    """Require one valid official prediction for every requested recording."""
+    if list(output.columns) != ["file_id", "prediction"]:
+        raise ValueError("Prediction columns must be exactly file_id,prediction.")
+    if not expected_filenames:
+        raise ValueError("Select at least one recording.")
+    if len(set(expected_filenames)) != len(expected_filenames):
+        raise ValueError("Duplicate filenames detected. Each recording needs a unique filename.")
+    if output.isna().any().any() or output["file_id"].duplicated().any():
+        raise ValueError("Predictions contain duplicate filenames or missing values.")
+    if len(output) != len(expected_filenames) or set(output.file_id) != set(expected_filenames):
+        raise ValueError(
+            "Some recordings failed validation. Fix them before downloading the batch."
+        )
+    if not set(output.prediction).issubset(ALLOWED_LABELS):
+        raise ValueError("Predictions contain an unsupported rail condition.")
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Generate rail_predictions.csv.")
     parser.add_argument("--test-dir", type=Path, required=True)
@@ -31,13 +49,7 @@ def create_predictions(test_dir: Path, model_path: Path) -> pd.DataFrame:
     output = pd.DataFrame(
         {"file_id": features["filename"].astype(str), "prediction": predictions.astype(str)}
     )
-    unknown = set(output["prediction"]) - ALLOWED_LABELS
-    if unknown:
-        raise ValueError(f"Model produced invalid labels: {sorted(unknown)}")
-    if output["file_id"].duplicated().any() or output.isna().any().any():
-        raise ValueError("Predictions contain duplicate filenames or missing values.")
-    if len(output) != len(paths):
-        raise ValueError("Prediction count does not match the number of test files.")
+    validate_prediction_output(output, [path.name for path in paths])
     return output
 
 

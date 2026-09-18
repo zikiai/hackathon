@@ -1,0 +1,1 @@
+{"name":"nebulax-ux-outline","private":true,"type":"module","scripts":{"check":"node --check app.js && node --check components/rail/index.js && node --check components/door/index.js && node --check components/acv/index.js && node --check components/shm/index.js"}}

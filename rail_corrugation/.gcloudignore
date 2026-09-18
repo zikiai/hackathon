@@ -1,0 +1,12 @@
+**
+!Dockerfile
+!requirements-runtime.txt
+!pyproject.toml
+!app.py
+!src/
+!src/**
+!artifacts/
+!artifacts/rail_model.joblib
+!artifacts/metrics.json
+!artifacts/cross_validation_predictions.csv
+**/__pycache__/**

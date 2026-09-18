@@ -1,5 +1,13 @@
 # Door subsystem workspace
 
+## Current selected model
+
+Use [`src/selected_model.py`](src/selected_model.py), which defaults to
+`artifacts/door_selected.joblib`. This is the current-pattern Random Forest plus movement
+direction, selected using training validation performance and simplicity. See
+[SELECTED_MODEL.md](SELECTED_MODEL.md) for commands, verification and limitations.
+The earlier baseline scripts and model are retained for comparison.
+
 Owner task: detect door-cycle start/end boundaries in a continuous stream and classify every detected cycle as `Normal` or `Abnormal resistance`.
 
 Required output:

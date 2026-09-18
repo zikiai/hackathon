@@ -7,6 +7,7 @@ import numpy as np
 import pandas as pd
 
 EXPECTED_COLUMNS = 129
+EXPECTED_ROWS = 10_000
 ALLOWED_LABELS = {"Normal", "Side I", "Side II"}
 
 
@@ -38,6 +39,11 @@ def read_sensor_csv(source: str | Path | BinaryIO) -> pd.DataFrame:
         )
     if frame.empty:
         raise ValueError("The sensor file contains no readings.")
+    if len(frame) != EXPECTED_ROWS:
+        raise ValueError(
+            f"Expected {EXPECTED_ROWS:,} readings for a one-second recording, "
+            f"but found {len(frame):,}."
+        )
 
     numeric = frame.apply(pd.to_numeric, errors="coerce")
     bad_cells = int(numeric.isna().sum().sum())

@@ -9,6 +9,7 @@ description = "Beginner-friendly Rail Corrugation baseline for NebulaX PS3"
 requires-python = ">=3.11"
 dependencies = [
   "joblib>=1.3,<2",
+  "imbalanced-learn>=0.14.2,<0.15",
   "matplotlib>=3.8,<4",
   "numpy>=1.26,<3",
   "pandas>=2.1,<3",
@@ -25,6 +26,11 @@ rail-inspect = "rail_cdm.inspect_data:main"
 rail-train = "rail_cdm.train:main"
 rail-predict = "rail_cdm.predict:main"
 rail-compare = "rail_cdm.compare_models:main"
+rail-tune = "rail_cdm.tune:main"
+rail-audit-shift = "rail_cdm.audit_shift:main"
+rail-compare-views = "rail_cdm.compare_views:main"
+rail-compare-instances = "rail_cdm.compare_instances:main"
+rail-compare-periodicity = "rail_cdm.compare_periodicity:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

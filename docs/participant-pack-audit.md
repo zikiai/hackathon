@@ -65,14 +65,9 @@ The four separate subsystem workspaces plus one `integrated_app/` are still appr
 
 ## Current Rail status
 
-- Official data downloaded locally into the Git-ignored data folder.
-- Inventory confirmed: 272 training files and 68 test files.
-- Training class distribution confirmed: 234 Normal, 14 Side I, 24 Side II.
-- Data shape confirmed: 10,000 rows and 129 columns per inspected file.
-- Baseline feature extraction, five-fold validation, final training, and test inference completed.
-- Initial Extra Trees macro F1: 0.6181.
-- Improved class-weighted Random Forest macro F1: 0.7191 using the same five folds.
-- Side I remains the main weakness, but its recall improved from 7.1% to 35.7%; Side II recall improved from 70.8% to 91.7%.
-- A schema-valid 68-row `outputs/rail_predictions.csv` has been generated locally.
-
-The next Rail priority is Side I recall, followed by app integration and deployment—not rebuilding the project structure.
+Updated 19 September: the active 30-feature Random Forest achieved fixed validation
+macro F1 0.823353 and mean macro F1 0.822854 across five arrangements. All 68 predictions
+were reproduced exactly; final upload/export safeguards pass their regression tests.
+See [final readiness](../rail_corrugation/FINAL_READINESS.md) for current completion status.
+The hosted URL and actual video recording remain outstanding. Earlier scores in historical
+experiment notes are not the current model's results.

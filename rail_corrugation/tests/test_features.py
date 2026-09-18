@@ -8,7 +8,7 @@ from rail_cdm.io import EXPECTED_COLUMNS, read_sensor_csv
 def test_extract_features_from_expected_layout(tmp_path):
     rng = np.random.default_rng(42)
     frame = pd.DataFrame(
-        rng.normal(size=(256, EXPECTED_COLUMNS)),
+        rng.normal(size=(10_000, EXPECTED_COLUMNS)),
         columns=["Rotating speed"] + [f"sensor_{number}" for number in range(128)],
     )
     path = tmp_path / "Train1.csv"
