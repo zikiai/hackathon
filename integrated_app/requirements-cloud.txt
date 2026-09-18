@@ -1,0 +1,12 @@
+Flask==3.1.2
+gunicorn==23.0.0
+google-cloud-firestore>=2.21,<3
+google-cloud-storage>=3.0,<4
+joblib==1.6.0
+imbalanced-learn==0.14.2
+numpy==2.5.3
+pandas==2.3.3
+scikit-learn==1.9.1
+scipy==1.18.1
+openpyxl==3.1.5
+rainflow==3.2.0

@@ -1,4 +1,5 @@
 import { loadEvaluationResults, renderModelEvidence } from './model-evidence.js';
+import {renderCloudUpload,restoreResults} from './cloud-client.js';
 import { predictionDownloads } from './prediction-downloads.js';
 import * as rail from './components/rail/index.js';
 import * as door from './components/door/index.js';
@@ -70,5 +71,21 @@ document.addEventListener('acv-analysis-cleared', () => {
     for (const id of Object.keys(entries)) if (id.startsWith('acv:')) delete entries[id];
   }
 });
+analyze = function () {
+  const m=modules[state.module];
+  return title('Analysis / New','Start with a record.','Upload a record to predict its condition.')+
+    '<div class="nx-flow"><b>01 Choose component</b><span>02 Upload record</span><span>03 Generate predictions</span></div>'+
+    `<label for="nx-module">Component</label><select id="nx-module">${Object.entries(modules).map(([k,v])=>`<option value="${k}" ${state.module===k?'selected':''}>${v.name}</option>`).join('')}</select><p class="nx-small">${escape(m.format)}</p>`+renderCloudUpload(state.module);
+};
+document.addEventListener('cloud-results', event => {
+  const {component,result,navigate}=event.detail;
+  if(predictionDownloads[component]?.url.startsWith('blob:'))URL.revokeObjectURL(predictionDownloads[component].url);
+  const filename=component==='acv'?'acv_predictions.csv':component==='shm'?'shm_predictions.csv':component==='door'?'door_predictions.csv':'rail_predictions.csv';
+  predictionDownloads[component]={filename,url:URL.createObjectURL(new Blob([result.csv],{type:'text/csv;charset=utf-8'})),count:component==='acv'?result.cases.length:result.records.length,unit:component==='door'?'movements':'recordings'};
+  if(navigate){state.module=component;state.page='review';state.exportOpen=false;}
+  state.selected={...(state.selected||{}),[component]:components[component].getRecords()[0].id};
+  if(state.page==='review')render();
+});
 render();
+restoreResults();
 loadEvaluationResults().then(()=>{if(state.page==='method')render();});

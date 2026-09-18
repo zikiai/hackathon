@@ -1,7 +1,8 @@
 import { evidence } from './evidence.js';
+import {liveResult} from '../../cloud-client.js';
 const escape=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const number=(value,digits=4)=>Number(value).toLocaleString('en-SG',{maximumFractionDigits:digits});
-export function getRecords(){return evidence.records.map(r=>({...r,damage:r.prediction,prediction:'Damage estimate',title:`Fatigue damage · ${number(r.prediction)}`,provenance:'Calculated from official SHM test records'}));}
+export function getRecords(){return (liveResult('shm')?.records||evidence.records).map(r=>({...r,damage:r.prediction,prediction:'Damage estimate',title:`Fatigue damage · ${number(r.prediction)}`,provenance:'Calculated stress recording'}));}
 export function statisticsText(r){return [`Estimated fatigue damage: ${number(r.damage)} on the supplied reference scale.`,`Calculated from ${number(r.readings,0)} stress readings. This is not a percentage damaged, failure probability or remaining-life estimate.`];}
 export function recommendation(){return 'Review large stress changes against operating records and compare the estimate with asset history. Ask the responsible engineer to interpret it against applicable maintenance criteria; this result alone does not establish whether the structure is safe.';}
 function stressChart(r){

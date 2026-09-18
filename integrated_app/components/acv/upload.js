@@ -1,6 +1,7 @@
+import {liveResult} from '../../cloud-client.js';
 const escape = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let result = null, files = [], busy = false, message = '', selected = 0, evidenceRenderer;
-export function getResult() { return result; }
+export function getResult() { return liveResult('acv') || result; }
 export function downloadPredictions() {
   if (!result) return;
   const url = URL.createObjectURL(new Blob([result.csv], {type:'text/csv;charset=utf-8'}));
@@ -126,6 +127,6 @@ export function renderChart(recording, car) {
     <text x="755" y="255" text-anchor="end">${escape(recording.times.at(-1).replace('T',' '))}</text>
   </svg><p class="nx-small">Orange: selected car · Teal: other cars’ median · Grey: target met</p>
   <p>A higher gap means the car is further above its cooling target.</p>
-  <p class="nx-small">Chart shows all operating modes. Rankings use eligible cooling readings only. Time: SGT.</p>
+  <p class="nx-small">${recording.chart_sampled?'Chart is sampled for display. ':''}Chart shows all operating modes. Rankings use all eligible cooling readings. Time: SGT.</p>
   ${medianGap.some(Number.isFinite) ? '' : '<p>No peer median is available: fewer than three other cars have paired readings at the selected car’s recorded points.</p>'}`;
 }

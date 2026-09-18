@@ -1,5 +1,6 @@
 import { evidence } from './evidence.js';
-export function getRecords(){return evidence.records.map(r=>({...r,title:r.prediction==='Normal'?'Normal prediction':`Possible ${r.prediction} corrugation`,provenance:'Calculated reference recording · Unlabelled test data'}));}
+import {liveResult} from '../../cloud-client.js';
+export function getRecords(){return (liveResult('rail')?.records||evidence.records).map(r=>({...r,title:r.prediction==='Normal'?'Normal prediction':`Possible ${r.prediction} corrugation`,provenance:'Calculated recording · Unlabelled data'}));}
 const number=n=>Number.isFinite(n)?n.toFixed(4):'Not available';
 export function statisticsText(r){
  const s=r.stats, a=s.side1_vibration_rms_mean,b=s.side2_vibration_rms_mean;

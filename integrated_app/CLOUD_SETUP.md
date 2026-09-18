@@ -14,6 +14,22 @@ Transfer complete: all 86 files matched source sizes and Git blob SHA-1 checksum
 
 Firestore `datasets` documents contain component, filename, storage_uri, source_commit, source_path, sha256, size_bytes, split and availability status. These are file catalogue entries, not predictions or ground truth.
 
-Raw files are private. No public access or extra service-account permissions were granted. Existing Rail Cloud Run service and its deployment bucket are unchanged.
+Raw files remain private. Existing Rail Cloud Run service and its deployment bucket are unchanged.
 
-Remaining integration: backend upload/validation/inference, analysis ownership and status, prediction persistence/downloads, deployed shared frontend, and permission verification for the runtime service account. Firestore server access uses IAM; browser access must not be opened with permissive rules. ACV requires XLSX support rather than the current generic CSV-only picker.
+The shared application is now deployed to `nebulax-workspace` in Singapore:
+https://nebulax-workspace-1029817906638.asia-southeast1.run.app
+
+Public Cloud Run invocation was enabled with the owner's explicit approval.
+All four existing pipelines support uploads, result retrieval and CSV exports;
+ACV accepts XLSX. The runtime service account has bucket-scoped object read
+access and database-scoped access to the separate `nebulax-analyses` database.
+It does not have write access to the `(default)` catalogue database. Firestore,
+raw objects and credentials are not public.
+
+Private cloud checks passed for one official Rail recording, the full Door test
+recording, the ACV workbook and one SHM recording. Predictions matched previous
+exports; cloud object reads, Firestore save/read and cross-visitor denial passed.
+These are integration checks, not accuracy measurements on hidden test labels.
+
+See `CLOUD_DEPLOYMENT.md` for build prerequisites, limits and remaining demo
+boundaries, including temporary review notes and seven-day result access.

@@ -1,5 +1,6 @@
 import { evidence } from './evidence.js';
-export function getRecords(){return evidence.records.map(r=>({...r,title:r.prediction==='Normal'?'Normal movement':'Possible abnormal resistance',provenance:'Calculated from Test.csv · Hidden test labels unavailable'}));}
+import {liveResult} from '../../cloud-client.js';
+export function getRecords(){return (liveResult('door')?.records||evidence.records).map(r=>({...r,title:r.prediction==='Normal'?'Normal movement':'Possible abnormal resistance',provenance:'Calculated recording · Hidden labels unavailable'}));}
 const metrics=[['Mean absolute current','mean_abs_current_A'],['Peak absolute current','peak_abs_current_A'],['Current standard deviation','current_std_A'],['Early-third current','early_current_A'],['Middle-third current','middle_current_A'],['Late-third current','late_current_A']];
 const num=n=>n.toFixed(3);
 // Dataset timestamps are local/unspecified time, not UTC. Preserve them in exports.

@@ -1,0 +1,9 @@
+.git
+**/.venv
+**/__pycache__
+**/data
+**/outputs
+**/notebooks
+**/.env
+.env
+shm_work
