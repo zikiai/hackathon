@@ -1,6 +1,7 @@
 import { loadEvaluationResults, renderModelEvidence } from './model-evidence.js';
-import {renderCloudUpload,restoreResults} from './cloud-client.js';
+import {renderCloudUpload,restoreResults,resultSource,hasUploadedResults,setResultSource} from './cloud-client.js';
 import { predictionDownloads } from './prediction-downloads.js';
+const officialDownloads={...predictionDownloads};
 import * as rail from './components/rail/index.js';
 import * as door from './components/door/index.js';
 import * as acv from './components/acv/index.js?v=acv-integrated-1';
@@ -81,11 +82,21 @@ document.addEventListener('cloud-results', event => {
   const {component,result,navigate}=event.detail;
   if(predictionDownloads[component]?.url.startsWith('blob:'))URL.revokeObjectURL(predictionDownloads[component].url);
   const filename=component==='acv'?'acv_predictions.csv':component==='shm'?'shm_predictions.csv':component==='door'?'door_predictions.csv':'rail_predictions.csv';
-  predictionDownloads[component]={filename,url:URL.createObjectURL(new Blob([result.csv],{type:'text/csv;charset=utf-8'})),count:component==='acv'?result.cases.length:result.records.length,unit:component==='door'?'movements':'recordings'};
+  if(result)predictionDownloads[component]={filename,url:URL.createObjectURL(new Blob([result.csv],{type:'text/csv;charset=utf-8'})),count:component==='acv'?result.cases.length:result.records.length,unit:component==='door'?'movements':'recordings'};
+  else if(officialDownloads[component])predictionDownloads[component]={...officialDownloads[component]};
+  else delete predictionDownloads[component];
   if(navigate){state.module=component;state.page='review';state.exportOpen=false;}
-  state.selected={...(state.selected||{}),[component]:components[component].getRecords()[0].id};
+  state.selected={...(state.selected||{}),[component]:components[component].getRecords()[0]?.id};
   if(state.page==='review')render();
 });
+const reviewWithResults=review;
+review=function(){
+  const html=reviewWithResults();
+  const source=resultSource(state.module);
+  const controls=`<div class="nx-sectionhead"><span class="nx-small">${source==='official'?'Official test results':'Uploaded results'}</span><div class="nx-inline">${action('Official test results',`data-result-source="official" aria-pressed="${source==='official'}"`,source==='official')}${hasUploadedResults(state.module)?action('Uploaded results',`data-result-source="uploaded" aria-pressed="${source==='uploaded'}"`,source==='uploaded'):''}</div></div>`;
+  return html.replace(cards(),cards()+controls);
+};
+root.addEventListener('click',event=>{const button=event.target.closest('[data-result-source]');if(button)setResultSource(state.module,button.dataset.resultSource);});
 render();
 restoreResults();
 loadEvaluationResults().then(()=>{if(state.page==='method')render();});

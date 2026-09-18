@@ -1,7 +1,19 @@
 const results={};
+const defaults={};
+let sources={};
+try{sources=JSON.parse(localStorage.getItem('nx-result-sources')||'{}');}catch{/* Default to official results. */}
+if(!sources||typeof sources!=='object'||Array.isArray(sources))sources={};
 const escape=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let files=[], active='', busy=false, message='';
-export const liveResult=component=>results[component];
+export const resultSource=component=>sources[component]==='uploaded'&&results[component]?'uploaded':'official';
+export const hasUploadedResults=component=>Boolean(results[component]);
+export const liveResult=component=>resultSource(component)==='uploaded'?results[component]:defaults[component];
+export function setResultSource(component,source){
+  if(source==='uploaded'&&!results[component])return;
+  sources[component]=source==='uploaded'?'uploaded':'official';
+  localStorage.setItem('nx-result-sources',JSON.stringify(sources));
+  document.dispatchEvent(new CustomEvent('cloud-results',{detail:{component,result:liveResult(component),navigate:false}}));
+}
 export function renderCloudUpload(component){
   if(active!==component){active=component;files=[];message='';}
   const excel=component==='acv', suffix=excel?'.xlsx':'.csv';
@@ -12,7 +24,11 @@ function combine(component,parts){
   const csv=parts.map((r,i)=>i?r.csv.trimEnd().split('\n').slice(1).join('\n'):r.csv.trimEnd()).filter(Boolean).join('\n')+'\n';
   return {component,csv,records:parts.flatMap(r=>r.records||[]),cases:parts.flatMap(r=>r.cases||[]),warnings:parts.flatMap(r=>r.warnings||[])};
 }
-function apply(component,parts,navigate){results[component]=combine(component,parts);document.dispatchEvent(new CustomEvent('cloud-results',{detail:{component,result:results[component],navigate}}));}
+function apply(component,parts,navigate){
+  results[component]=combine(component,parts);
+  if(navigate){sources[component]='uploaded';localStorage.setItem('nx-result-sources',JSON.stringify(sources));}
+  document.dispatchEvent(new CustomEvent('cloud-results',{detail:{component,result:liveResult(component),navigate}}));
+}
 document.addEventListener('change',event=>{
   if(event.target.id!=='nx-cloud-files'||busy)return;
   files=Array.from(event.target.files||[]);message='';paint();
@@ -37,7 +53,7 @@ document.addEventListener('click',async event=>{
   finally{busy=false;paint();}
 });
 export async function restoreResults(){
-  try{const response=await fetch('./components/acv/test-result.json');if(response.ok)apply('acv',[await response.json()],false);}catch{/* Upload remains available. */}
+  try{const response=await fetch('./components/acv/test-result.json');if(response.ok){defaults.acv=combine('acv',[await response.json()]);document.dispatchEvent(new CustomEvent('cloud-results',{detail:{component:'acv',result:liveResult('acv'),navigate:false}}));}}catch{/* Upload remains available. */}
   let stored;try{stored=JSON.parse(localStorage.getItem('nx-result-ids')||'{}');}catch{return;}
   for(const [component,ids] of Object.entries(stored)){
     if(!['rail','door','acv','shm'].includes(component)||!Array.isArray(ids)||ids.length>68)continue;

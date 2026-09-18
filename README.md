@@ -1,76 +1,97 @@
-# NebulaX PS3 Team Repository
+# rookies — NebulaX Train Condition Monitoring
 
-One shared repository contains four independent subsystem workspaces. Each member can develop and test their own pipeline without repeatedly editing the same files.
+One maintenance workspace for four train subsystems: rail corrugation, door
+operation, air conditioning and structural health. Built for Nebula X PS3.
 
-```text
-hackathon/
-├── door/                 Door cycle segmentation and classification
-├── acv/                  Refrigerant-leak car ranking
-├── rail_corrugation/     Rail Side I / Side II classification
-├── shm/                  Cumulative fatigue-damage regression
-├── integrated_app/       Final shared upload and results application
-├── shared/               Agreements used by all four pipelines
-└── docs/                 Team process and Git workflow
+**[Open the public prototype](https://nebulax-workspace-1029817906638.asia-southeast1.run.app/)** ·
+**[Solution write-up](docs/submission/write_up.md)** ·
+**[Submission links and checklist](docs/submission/SUBMISSION.md)**
+
+## Try it
+
+1. Open **Review findings** and select a component. **Official test results** shows
+   the complete prepared batch: 68 rail recordings, 38 detected door movements,
+   one ACV workbook and 16 structural-health recordings.
+2. Choose **New analysis** and upload recordings. Rail, Door and SHM use CSV;
+   ACV uses XLSX. Door takes one continuous recording.
+3. Click **Output predicted result**. Review the prediction, measured evidence
+   and suggested technician check. Uploads appear under **Uploaded results**;
+   switch back to **Official test results** without losing the uploaded batch.
+4. Choose **Download predictions → Download CSV**. The export matches the
+   selected result source; a one-file upload does not export the full test set.
+
+No login is required. Files are limited to 28 MiB each. Uploads use the saved
+pipelines without retraining. Results are private to the current browser and
+accessible for seven days; review notes are temporary.
+
+## Approaches and development evidence
+
+| Component | Selected approach | Development metric |
+|---|---|---|
+| Rail | Signal features, fold-fitted selection/SMOTE, Random Forest | Macro F1 0.823353; five split-seed mean 0.822854 |
+| Door | Gap segmentation, seven current/direction features, small Random Forest | IoU-weighted F1 1.0000 in reused chronological and robustness checks |
+| ACV | Rank cars by mean positive temperature gap during eligible cooling | Linear rank-decay 0.9792 over six development cases |
+| SHM | Rainflow cycle features and Ridge correction of a damage proxy | Teammate-reported grouped MAPE 2.020%; derived score 0.9798 |
+
+These are **not held-out test scores**. Development data informed model choices.
+Door's perfect development result is not a promise of perfect predictions. SHM's
+reported validation has not been independently rerun during integration.
+Only the organiser holds the official test answers.
+
+## Architecture
+
+HTML/CSS/JavaScript dashboard → Flask service → saved subsystem pipeline →
+on-screen evidence and competition CSV. Google Cloud Run hosts the container;
+private Cloud Storage holds the 86 official test inputs; private Firestore stores
+browser-scoped results. Storage, database access and credentials are not public.
+The AI improvement tab describes a planned human-reviewed capability;
+Gemini/Vertex AI are not running the predictions.
+
+## Run the shared app
+
+The submission app bundle includes the trusted trained models. A Git clone alone
+does **not** include the ignored Rail/Door bundles. Before building, supply
+`rail_corrugation/artifacts/rail_model.joblib` and
+`door/artifacts/door_selected.joblib`. SHM's bundle is tracked.
+Never load an untrusted uploaded pickle/joblib model.
+
+From the repository root, with Docker installed:
+
+```sh
+docker build -t nebulax-workspace .
+docker run --rm -p 8080:8080 nebulax-workspace
 ```
 
-## Current delivery status
+Open `http://localhost:8080`. Local results use memory unless cloud variables are
+configured. See [deployment notes](integrated_app/CLOUD_DEPLOYMENT.md) for runtime
+limits and permissions. No raw dataset is included in the submission bundle;
+judges can upload their organiser-provided inputs.
 
-Rail has a working upload-to-download Streamlit application and a frozen 30-feature
-Random Forest pipeline. It achieved fixed five-fold macro F1 **0.8234**, accuracy
-**94.1%**, and Side I recall **78.6%**; mean macro F1 across five fold arrangements
-was **0.8229**. These are development validation scores, not hidden-test results.
-All 68 official test predictions were reproduced and validated. The latest suite has
-34 passing tests, including upload and complete-batch download checks.
+## Repository and checks
 
-Architecture: recording CSV → validation → signal summaries → fold-fitted feature
-selection and SMOTE during training → Random Forest → class result and official CSV.
-The app uses the saved pipeline directly and displays measured side-to-side vibration evidence.
+`rail_corrugation/`, `door/`, `acv/`, `shm/`: component pipelines.
+`integrated_app/`: shared UI/service. `tools/`: submission checks.
 
-Start with [Rail setup and results](rail_corrugation/README.md),
-[release status](rail_corrugation/FINAL_READINESS.md), and
-[demo narration/write-up](docs/rail-demo-and-writeup.md).
-[Cloud Run configuration](rail_corrugation/DEPLOYMENT.md) is prepared but deployment
-is not yet verified. Add the hosted URL and recorded video link once available.
-Door and SHM pipeline contributions are merged. Door lives in `door/`; the SHM contribution currently lives in `shm_work/`. ACV is awaiting its contribution.
-The shared UX outline is runnable from `integrated_app/`, with dedicated component UX folders and sample findings. The merged pipelines are not yet connected to that outline. See [shared UX setup and ownership](integrated_app/README.md).
+Install `integrated_app/requirements-cloud.txt` in an isolated environment, then:
 
-Ownership below identifies workstreams. Replace role labels with the actual team members
-and describe their completed contributions before submitting the final team README.
+```sh
+python -m unittest discover -s integrated_app -p 'test_*server.py'
+node integrated_app/test-result-sources.mjs
+```
 
-## Ownership
+`tools/build_submission.py` runs the official cloud test catalogue through the
+app's inference endpoint and validates all four submission CSVs.
 
-| Workspace | Main owner | Required output |
-|---|---|---|
-| `door/` | Door member | `door_predictions.csv` |
-| `acv/` | ACV member | `acv_predictions.csv` |
-| `rail_corrugation/` | Rail member | `rail_predictions.csv` |
-| `shm/` | SHM member | `shm_predictions.csv` |
-| `integrated_app/` | Shared near the end | One app calling all completed pipelines |
+This is a decision-support prototype, not a certified diagnostic system or
+remaining-useful-life forecaster. Technicians must confirm findings. Keep the
+temporary cloud project active through judging; instance limits are not a hard
+spending cap.
 
-Each owner decides the internal modelling approach but must follow [`shared/PIPELINE_CONTRACT.md`](shared/PIPELINE_CONTRACT.md). This is what makes later integration predictable.
+## References
 
-## Getting started
+- [Official PS3 specifications](https://github.com/aochinwen/NebulaX-Hackathon-ProblemStatement/blob/main/PS3/01_Problem_Statement_3_Specifications.md)
+- [Subsystem info kits](https://github.com/aochinwen/NebulaX-Hackathon-ProblemStatement/tree/main/PS3/03_References)
+- [Required example schemas](https://github.com/aochinwen/NebulaX-Hackathon-ProblemStatement/tree/main/PS3/04_Example_Submission)
 
-1. Clone the repository.
-2. Read [`docs/team-workflow.md`](docs/team-workflow.md).
-3. Enter your assigned directory.
-4. Follow that directory's README.
-5. Work on a branch and open a pull request rather than editing `main` directly.
-
-The Rail workspace already contains a complete beginner-friendly baseline. The other workspaces begin with their data contract and task checklist so their owners can add code independently.
-
-Before the event, review the [participant-pack readiness audit](docs/participant-pack-audit.md) and the [Google tools guide](docs/google-tools-guide.md).
-
-## Repository rules
-
-- Do not commit organizer datasets; every member copies them into their own ignored `data/raw/` directory.
-- Do not commit trained models, generated outputs, `.env` files, or credentials.
-- Do not use hidden test answers to select features or models.
-- Keep the exact organizer filenames and prediction labels.
-- A subsystem is integration-ready only when its command can turn an input path into the exact required CSV.
-
-## Sync the shared UX before starting component design
-
-The combined baseline is on this repository’s `main` branch. In GitHub Desktop, fetch and pull `main`, then create your component design branch. If working in a fork, first use **Sync fork → Update branch** on GitHub, then fetch/pull locally. Commit or stash unfinished local work before switching branches.
-
-Component design folders: `integrated_app/components/rail/`, `door/`, `acv/`, and `shm/`. Each has its own README and page module. Keep shared navigation/style changes coordinated with the integrator.
+Raw datasets, credentials and environments must not be committed.
+The required video is prepared separately and is not included in this package.

@@ -5,7 +5,8 @@ the tab. Raw datasets are not downloaded by the UI.
 
 After a cloud evaluation job completes, publish its results to this JSON file
 beside the deployed app. Uploading raw data alone does not update scores.
-No Google Cloud job, credentials or deployment is configured by this UI change.
+The deployed shared app serves the saved evidence file. Upload inference does not
+recalculate validation scores; there is no automatic evaluation/training job.
 
 Each component key (`rail`, `door`, `acv`, `shm`) has:
 
@@ -21,4 +22,5 @@ rather than invented scores. Publish the artifact atomically after validation.
 
 Initial evidence sources: Rail component's existing five-fold and five-seed
 results; Door selected-model chronological validation; ACV README's six-case
-development evaluation (0.9792). No SHM score is currently available.
+development evaluation (0.9792); SHM teammate-reported grouped MAPE of 2.020%
+(derived score 0.9798), not independently rerun during integration.

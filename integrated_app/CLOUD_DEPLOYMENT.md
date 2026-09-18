@@ -8,7 +8,7 @@ four saved prediction pipelines. No training is performed on uploads.
 - Region: `asia-southeast1`
 - Service: `nebulax-workspace`
 - Public URL: https://nebulax-workspace-1029817906638.asia-southeast1.run.app
-- Active revision: `nebulax-workspace-00002-pzx`
+- Active revision: `nebulax-workspace-00003-m64`
 - Resources: 2 CPUs, 4 GiB RAM, 0–2 instances, request concurrency 8,
   one inference at a time per instance, 900-second request timeout.
 - Runtime identity: `nebulax-backend@qwiklabs-gcp-00-27def4c41cb8.iam.gserviceaccount.com`
@@ -36,6 +36,8 @@ Review notes are still in-memory; they are not claimed to be durable records.
 Official saved examples remain available for all four components. These are
 unlabelled test predictions, not accuracy measurements. ACV chart points are
 sampled for display; every eligible reading still contributes to its ranking.
+Official test results and uploaded results have separate selectors and exports.
+Legacy one-file browser sessions no longer hide the complete official batch.
 
 Only the Cloud Run application is public. Storage, Firestore and credentials
 must not be made public. Firestore access uses database-scoped IAM. The static
@@ -79,3 +81,10 @@ cross-visitor denial. Rail upload and refresh restoration were also checked
 through the public browser UI. Cloud-side predictions matched the existing
 exports for one Rail and one SHM file, the complete Door test recording and
 the ACV workbook. This does not establish hidden-test prediction accuracy.
+
+Submission preparation then reran all 86 official inputs through the deployed
+app endpoint: 68 Rail files, Door Test.csv (38 movements), one ACV workbook and
+16 SHM files. All predictions matched the saved exports (SHM within numeric
+tolerance). Archive validation checks exact headers, complete file coverage,
+allowed labels, Door intervals, ACV car IDs and finite SHM values. The manifest
+is included in the rookies submission package, outside predictions.zip.
