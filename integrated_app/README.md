@@ -31,8 +31,8 @@ The integrator owns `app.js` (common interaction and routing), `styles.css` (sha
 - Numerical interpretation with example values clearly distinguished from real validation results.
 - Per-component methodology pages; Rail has existing research results, others have explicit placeholders.
 - Review notes and reviewed/reopened state, retained in memory while navigating. Reloading resets this outline.
-- Downloadable sample Rail prediction CSV and per-component text reports including notes. Sample filenames begin `demo_`; these are not competition submissions.
-- Feedback collection and an AI-improvement concept page across all components. No AI API, retraining, source-code modification or deployment runs from the interface.
+- Downloadable full saved competition-format outputs: 68 Rail test files and 38 Door movements. Predictions are not test ground truth.
+- A future AI-improvement concept page; review screens use only Mark as reviewed / Reopen review. No AI API, retraining, source-code modification or deployment runs from the interface.
 
 ## What each teammate should deliver
 
@@ -51,4 +51,16 @@ Review notes are feedback, not automatically verified labels. The intended flow 
 
 ## Checks
 
-With Node installed, run `npm run check` in this folder for JavaScript syntax checks (no dependencies to install). Browser smoke check: switch all four components, inspect their methodology pages, write a note, mark a finding reviewed, collect feedback, and download a sample report/CSV. Check narrow and desktop widths.
+With Node installed, run `npm run check` in this folder for JavaScript syntax checks (no dependencies to install). Browser smoke check: switch all four components, inspect model evidence, select a local CSV, write a note, mark a finding reviewed, and download the full Rail/Door prediction CSVs. Check narrow and desktop widths.
+
+## Rail and Door evidence views
+
+Both use Interpretation of statistics → Recommendation to the technician → Review note, including Normal predictions. Rail and Door export `getRecords`, `renderStatistics`, `statisticsText` and `recommendation` from component-local `view.js`; reports reuse the same interpretation text.
+
+Rail displays all 68 test files, recomputed using the saved pipeline and raw recordings. `evidence.js` contains aggregate measurements, class scores and source/model hashes, not raw samples. Regenerate with the Rail virtualenv and `build_reference_examples.py --repo REPO_PATH --output EVIDENCE_JS_PATH`. Ground-truth test labels are unknown. The Rail download contains all 68 saved predictions.
+
+Door now displays all 38 calculated Test.csv movements (29 Normal, 9 Abnormal resistance), with measured current, direction, timing, model scores and training-normal ranges. Data lives in door/data/raw; the reproduced model is door/artifacts/door_selected.joblib. Regenerate with the Rail virtualenv and components/door/build_reference_examples.py --repo REPO_PATH. Source/model hashes are stored in Door evidence.js. These are reference findings for UX testing; the upload backend is still not connected.
+
+## Current cloud and integration status
+
+See CLOUD_SETUP.md for the private data bucket and Firestore catalogue (86 test files). The shared dashboard is still local and does not run inference on selected uploads. CLOUD_RESULTS.md describes the evaluation artifact interface. Preserve app.js, index.html and styles.css during component-only teammate integration unless a shared change is explicitly agreed.

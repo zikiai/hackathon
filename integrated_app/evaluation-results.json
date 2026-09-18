@@ -1,0 +1,26 @@
+{
+  "rail": {
+    "score": 0.823353,
+    "model": "Random Forest with class balancing",
+    "evaluation": "Five-fold cross-validation on 272 labelled training recordings. Mean macro F1 across five split seeds: 0.822854.",
+    "rationale": "Random Forest captures combinations of vibration and shock features. Feature selection and class balancing help detect the rarer faults. We retained this model because the tested alternatives did not improve its validation score."
+  },
+  "door": {
+    "score": 1.0,
+    "model": "Current-pattern Random Forest",
+    "evaluation": "Five chronological validation blocks covering 110 labelled training movements. Earlier-to-later and similar-curve-exclusion checks also reported 1.0000. These exploratory evaluations reused the development data.",
+    "rationale": "A small, depth-limited Random Forest combines current patterns from different stages of a door movement with its direction. It performed well in the training-data checks while keeping the feature set compact. Performance on new doors still needs validation."
+  },
+  "acv": {
+    "score": 0.9792,
+    "model": "Temperature-deviation ranking rule",
+    "evaluation": "Six labelled training cases: the faulty car ranked first in five cases and second in one. These are development results; the cases informed exploration, so this is not an independent holdout score.",
+    "rationale": "The rule ranks cars by how far their temperatures remain above the cooling target during eligible cooling operation. It is transparent and needs no fitted parameters, making it a practical baseline for the small labelled dataset."
+  },
+  "shm": {
+    "score": null,
+    "model": "Model selection pending",
+    "evaluation": "No measured training-data evaluation is available yet.",
+    "rationale": "The planned approach compares stress and rainflow features with a regression baseline for cumulative fatigue damage. A final model and selection rationale will be shown after evaluation."
+  }
+}
