@@ -1,8 +1,22 @@
 # Shared maintenance UX outline
 
-A runnable, dependency-free version of the agreed UI design. This is a development outline with clearly marked sample findings, not a live monitoring or inference service. The existing Rail Streamlit app remains the working prediction application.
+A shared development interface. ACV now has a local Python upload adapter calling its existing baseline; the other sections retain clearly marked sample findings. The existing Rail Streamlit app remains its working prediction application. The new ACV integration has been written but not executed or browser-tested yet.
 
-## Run locally
+## Run with ACV uploads
+
+Stop the previous static server with Control+C, then run from the repository root:
+
+```sh
+acv/.venv/bin/python integrated_app/server.py --port 8503
+```
+
+Open http://127.0.0.1:8503/ and choose **Air conditioning**. Select original `.xlsx` cases, click **Analyse cars**, and wait. Select a numbered carriage for its rank, usable reading count, gap and raw temperature chart. Download `acv_predictions.csv` only after the entire batch succeeds. No labels are read and the ranking rule is unchanged. First check training case 01 against the previously verified CLI output before using other cases.
+
+The server uses the existing ACV dependencies (`acv/requirements.txt`), binds only to the local computer and serves this directory. At most 20 files / 100 MiB per batch are accepted. Uploaded workbooks are temporarily stored and deleted after analysis. Browser memory retains selected files and results until reload. Invalid batches clear results and produce no download. Analysis currently rereads workbooks for evidence, so large batches can take several minutes. Charts use all raw temperature readings, including ineligible modes and zeros; missing values and unusually long timestamp intervals break the lines. Charts are descriptive and do not tune the model.
+
+Both Review findings and New analysis open the same ACV upload/results workspace. Other subsystem views, notes and sample exports keep their existing behaviour. The global banner/footer now distinguishes local ACV analysis from those sample views.
+
+## Static preview only (no ACV analysis)
 
 From the repository root:
 
