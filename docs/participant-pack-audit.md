@@ -1,5 +1,7 @@
 # Participant pack readiness audit
 
+Historical pre-build planning checklist. The status table below records the initial planning stage, not the completed release. See the [project README](../README.md) and [deployment verification](../integrated_app/CLOUD_DEPLOYMENT.md) for current status.
+
 Source reviewed: `[Nebula X Hackathon] Participants Information Pack[22].pdf`, dated September 2026.
 
 ## Hard schedule

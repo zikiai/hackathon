@@ -4,8 +4,8 @@ One maintenance workspace for four train subsystems: rail corrugation, door
 operation, air conditioning and structural health. Built for Nebula X PS3.
 
 **[Open the public prototype](https://nebulax-workspace-1029817906638.asia-southeast1.run.app/)** ·
-**[Solution write-up](docs/submission/write_up.md)** ·
-**[Submission links and checklist](docs/submission/SUBMISSION.md)**
+**[Model details](docs/rail-model-release.md)** ·
+**[Deployment details](integrated_app/CLOUD_DEPLOYMENT.md)**
 
 ## Try it
 

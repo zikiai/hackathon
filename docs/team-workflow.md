@@ -1,9 +1,8 @@
 # NebulaX PS3 team workflow
 
-This document separates three different things that are easy to mix up:
+This document records the original team workflow. For the final architecture and selected models, see the [project README](../README.md).
 
 - **Programming language:** use Python for all four prediction pipelines.
-- **Language model:** use Gemini as a development assistant for coding, documentation, UI copy, and review. It is not the sensor-prediction model.
 - **Machine-learning model:** the model trained on the supplied sensor files to produce the official predictions.
 
 ## 1. Shared technology choices
@@ -20,12 +19,8 @@ Keep the shared stack small:
 | Source control | This GitHub repository with pull requests |
 | UI prototype | Stitch |
 | Working application | Streamlit first; deploy to Cloud Run |
-| AI coding/review assistant | Gemini 3.8 Flash where available |
-| Difficult one-off reasoning/review | Gemini 3.1 Pro Preview where available; do not make a preview model a production dependency |
 
-Gemini can help explain code, propose tests, review a notebook, draft UI text, or turn a design into frontend code. Team members must still run and verify everything it produces. Do not upload hidden answers, credentials, or restricted data to prompts.
-
-The final prediction pipelines should not require Gemini. A network failure or API quota should not prevent generation of `predictions.zip`.
+Prediction generation uses the saved subsystem pipelines and has no language-model API dependency.
 
 ## 2. What is graded
 
@@ -414,4 +409,3 @@ The integrated app should call your pipeline, not recreate it.
 ### Your personal definition of done
 
 Rail is complete when a teammate can clone the repository, install it, supply the data, train the model, reproduce your validation score, upload a new file through the app, and download a valid `rail_predictions.csv` without asking you how the code works.
-
