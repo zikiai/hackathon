@@ -109,8 +109,7 @@ export function renderInterpretation(recording = null) {
       ${recording && rows[car].layout === 'rich (provisional)' ? '<div class="nx-notice">Provisional cabin/target mapping. No confirmed information-valid flag is available for this layout.</div>' : ''}
     </section>`).join('')}
     </div>
-  </section>
-  <div class="nx-notice"><strong>Data coverage is separate from findings</strong><p>Cars without usable readings must show “Insufficient data”. They appear last by ID in the export; this does not establish that they are healthy.</p></div>`;
+  </section>`;
 }
 
 export function renderMethod() {

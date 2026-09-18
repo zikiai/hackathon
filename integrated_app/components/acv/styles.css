@@ -1,4 +1,36 @@
 /* Reference-inspired carriage artwork is decorative, not a fault-status display. */
+/* A single ACV workbook needs a summary strip, not a tall file sidebar. */
+#nx-ops .nx-workspace:has(.acv-explorer):has(> .nx-list > .nx-record:only-child) {
+  grid-template-columns: minmax(0, 1fr);
+  height: auto;
+  align-items: start;
+}
+#nx-ops .nx-workspace:has(.acv-explorer) > .nx-list:has(> .nx-record:only-child) {
+  height: auto;
+  max-height: none;
+  overflow: visible;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  scrollbar-gutter: auto;
+}
+#nx-ops .nx-workspace:has(.acv-explorer) > .nx-list > .nx-record:only-child {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  padding: 12px 16px;
+}
+#nx-ops .nx-workspace:has(.acv-explorer) > .nx-list > .nx-record:only-child strong { margin: 0; }
+#nx-ops .nx-workspace:has(.acv-explorer) > .nx-list > .nx-record:only-child p { margin-left: auto; overflow-wrap: anywhere; }
+#nx-ops .nx-workspace:has(.acv-explorer):has(> .nx-list > .nx-record:only-child) > .nx-detail {
+  height: auto;
+  overflow: visible;
+  scrollbar-gutter: auto;
+}
+@media (max-width: 560px) {
+  #nx-ops .nx-workspace:has(.acv-explorer) > .nx-list > .nx-record:only-child p { flex-basis: 100%; margin-left: 0; }
+}
 #nx-ops .acv-explorer { container-type: inline-size; }
 #nx-ops .acv-train-scroll { padding: 10px 0 4px; }
 #nx-ops .acv-train { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 10px; width: 100%; padding: 12px 0; }
@@ -31,9 +63,9 @@
 #nx-ops .acv-result-summary h2 { font-size: 30px; margin: 0 0 4px; }
 #nx-ops .acv-result-summary .acv-result-subtitle { font-size: 16px; color: var(--nx-accent); font-weight: 600; margin-bottom: 8px; }
 #nx-ops .acv-result-summary h3 { margin-top: 20px; }
-#nx-ops .acv-ranking-list { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 12px 0; }
-#nx-ops .acv-ranking-list li { display: flex; flex-direction: column; align-items: center; gap: 6px; margin-right: 8px; }
-#nx-ops .acv-ranking-list li > strong { display: block; padding: 8px 12px; background: var(--nx-surface); border: 1px solid var(--nx-line); border-radius: 8px; }
+#nx-ops .acv-ranking-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px 10px; list-style: none; padding: 0; margin: 12px 0; }
+#nx-ops .acv-ranking-list li { display: flex; flex-direction: column; align-items: center; gap: 6px; min-width: 0; }
+#nx-ops .acv-ranking-list li > strong { display: block; width: 100%; text-align: center; padding: 8px 4px; background: var(--nx-surface); border: 1px solid var(--nx-line); border-radius: 8px; }
 #nx-ops .acv-rank-number { font-size: 12px; color: var(--nx-muted); }
 #nx-ops .acv-temperature-chart { display: block; width: 100%; height: auto; margin-top: 12px; color: var(--nx-muted); }
 #nx-ops .acv-temperature-chart text { fill: currentColor; font-size: 12px; }

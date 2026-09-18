@@ -4,7 +4,7 @@ import * as rail from './components/rail/index.js';
 import * as door from './components/door/index.js';
 import * as acv from './components/acv/index.js?v=acv-integrated-1';
 import {getResult as getAcvResult} from './components/acv/upload.js';
-import * as shm from './components/shm/index.js';
+import * as shm from './components/shm/index.js?v=shm-integrated-1';
 const components={rail,door,acv,shm};
 const modules=Object.fromEntries(Object.entries(components).map(([key,value])=>[key,value.config]));
 const root=document.getElementById('nx-ops'),content=root.querySelector('#nx-content');

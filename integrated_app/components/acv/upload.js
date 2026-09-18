@@ -124,7 +124,8 @@ export function renderChart(recording, car) {
     <text x="55" y="18">Indoor minus target · temperature gap (units unconfirmed)</text>
     <text x="55" y="235">${escape(recording.times[0].replace('T',' '))}</text>
     <text x="755" y="255" text-anchor="end">${escape(recording.times.at(-1).replace('T',' '))}</text>
-  </svg><p><strong>Orange solid:</strong> this car’s gap. <strong>Teal dashed:</strong> median gap of the other cars. Grey dashed: zero.</p>
-  <p class="nx-small">Each gap is indoor temperature minus that car’s own target. The median is the middle value at the same timestamp, excluding this car; at least three other cars need finite temperature pairs. Orange above teal means this car is further above its own target than its peers. Negative gaps are retained. This comparison includes all operating modes, not just valid cooling readings, and is descriptive only; it does not change the ranking. The ranking averages nonnegative gaps over eligible cooling readings. Missing pairs and gaps over 1.5 times the median recording interval break the lines. Singapore time (SGT, UTC+8).</p>
+  </svg><p class="nx-small">Orange: selected car · Teal: other cars’ median · Grey: target met</p>
+  <p>A higher gap means the car is further above its cooling target.</p>
+  <p class="nx-small">Chart shows all operating modes. Rankings use eligible cooling readings only. Time: SGT.</p>
   ${medianGap.some(Number.isFinite) ? '' : '<p>No peer median is available: fewer than three other cars have paired readings at the selected car’s recorded points.</p>'}`;
 }

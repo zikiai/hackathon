@@ -6,7 +6,7 @@
     "rationale": "Random Forest captures combinations of vibration and shock features. Feature selection and class balancing help detect the rarer faults. We retained this model because the tested alternatives did not improve its validation score."
   },
   "door": {
-    "score": 1.0,
+    "score": 1,
     "model": "Current-pattern Random Forest",
     "evaluation": "Five chronological validation blocks covering 110 labelled training movements. Earlier-to-later and similar-curve-exclusion checks also reported 1.0000. These exploratory evaluations reused the development data.",
     "rationale": "A small, depth-limited Random Forest combines current patterns from different stages of a door movement with its direction. It performed well in the training-data checks while keeping the feature set compact. Performance on new doors still needs validation."
@@ -18,9 +18,9 @@
     "rationale": "The rule ranks cars by how far their temperatures remain above the cooling target during eligible cooling operation. It is transparent and needs no fitted parameters, making it a practical baseline for the small labelled dataset."
   },
   "shm": {
-    "score": null,
-    "model": "Model selection pending",
-    "evaluation": "No measured training-data evaluation is available yet.",
-    "rationale": "The planned approach compares stress and rainflow features with a regression baseline for cumulative fatigue damage. A final model and selection rationale will be shown after evaluation."
+    "score": 0.9798,
+    "model": "Rainflow features + Ridge regression",
+    "evaluation": "Reported five-fold grouped validation on 64 labelled training records, repeated across three splits. Average prediction error: 2.020% (MAPE). Similar records were kept together; these exploratory checks reused the development data.",
+    "rationale": "The model combines stress measurements and loading-cycle patterns to estimate fatigue damage. Ridge regression adjusts the cycle-based estimate while limiting model complexity. The tested alternatives did not establish a clear improvement."
   }
 }

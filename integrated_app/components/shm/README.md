@@ -1,16 +1,17 @@
-# Structural health UX ownership
+# Structural Health integration
 
-Edit `index.js` in this folder to develop your component without changing your teammates' pages.
+The shared app consumes this component through getRecords/renderStatistics and
+uses its existing navigation, finding selection, review notes and CSV download.
+Only view.css styles SHM content, under .shm-insight. The standalone SHM app's
+global styles, navigation and uploader are not imported.
 
-- `config`: page labels, sample finding, upload guidance and interpretation text.
-- `renderInterpretation(state)`: numerical evidence and explanation for the selected finding.
-- `renderMethod()`: model choice, preprocessing, experiments, validation splits and measured results.
-- Add component-specific assets/helpers in this folder. Scope styles to this component.
+Evidence contains actual predictions from the 16 official test files at organiser
+commit 966c976005db2e3e40a691cff268fdb8f396a5df. Computation reuses shm/ui/serve.py
+Engine and the merged SHM model. Source SHA-256 and model-version hashes are
+included. Stress-chart points are min/max summaries, not raw recordings.
+No test accuracy is claimed. New user-upload inference is still not connected.
 
-These functions return trusted HTML templates. Escape any filenames, notes or other user-provided text before inserting it. Shared code already escapes review notes.
-
-The common shell owns navigation, review state, downloads and feedback. Coordinate changes to `../../app.js` with the integrator. Your Python analysis remains in the existing repository subsystem directory; do not duplicate it here.
-
-All displayed findings are sample data. Replace examples only when your tested backend supplies results. Do not mark a prediction operational merely because it has a high score. See `../../README.md` for the handoff checklist.
-
-The merged SHM prediction utility currently lives in repository-root `shm_work/predict_shm.py`; the original `shm/` directory remains a scaffold.
+Regenerate with build_reference_examples.py --repo REPO --input TEST_DIRECTORY.
+The training score shown in evaluation-results.json is approximately 0.9798,
+derived from the teammate-reported 2.020% grouped-validation MAPE in
+shm/ui/shm_page.js; that validation was not independently rerun for integration.
