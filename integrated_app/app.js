@@ -1,5 +1,5 @@
 import { loadEvaluationResults, renderModelEvidence } from './model-evidence.js';
-import {renderCloudUpload,restoreResults,resultSource,hasUploadedResults,setResultSource} from './cloud-client.js';
+import {renderCloudUpload,restoreResults} from './cloud-client.js';
 import { predictionDownloads } from './prediction-downloads.js';
 const officialDownloads={...predictionDownloads};
 import * as rail from './components/rail/index.js';
@@ -89,14 +89,6 @@ document.addEventListener('cloud-results', event => {
   state.selected={...(state.selected||{}),[component]:components[component].getRecords()[0]?.id};
   if(state.page==='review')render();
 });
-const reviewWithResults=review;
-review=function(){
-  const html=reviewWithResults();
-  const source=resultSource(state.module);
-  const controls=`<div class="nx-sectionhead"><span class="nx-small">${source==='official'?'Official test results':'Uploaded results'}</span><div class="nx-inline">${action('Official test results',`data-result-source="official" aria-pressed="${source==='official'}"`,source==='official')}${hasUploadedResults(state.module)?action('Uploaded results',`data-result-source="uploaded" aria-pressed="${source==='uploaded'}"`,source==='uploaded'):''}</div></div>`;
-  return html.replace(cards(),cards()+controls);
-};
-root.addEventListener('click',event=>{const button=event.target.closest('[data-result-source]');if(button)setResultSource(state.module,button.dataset.resultSource);});
 render();
 restoreResults();
 loadEvaluationResults().then(()=>{if(state.page==='method')render();});

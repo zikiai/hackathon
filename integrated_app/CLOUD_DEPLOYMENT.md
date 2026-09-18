@@ -28,7 +28,9 @@ replace the previous displayed results or produce a partial combined export.
 
 Saved results are scoped to an opaque HttpOnly browser cookie. Firestore stores
 only the cookie hash and compact result JSON, not the raw file. Result IDs in
-localStorage restore successful batches after refresh. Results are inaccessible
+localStorage retain references to successful batches. The page always opens the
+complete official test batch; a new upload displays its predictions immediately.
+Results are inaccessible
 after seven days; this is application expiry, not automatic database deletion.
 Clearing cookies loses access. There is no cross-device user account system.
 Review notes are still in-memory; they are not claimed to be durable records.
@@ -36,8 +38,9 @@ Review notes are still in-memory; they are not claimed to be durable records.
 Official saved examples remain available for all four components. These are
 unlabelled test predictions, not accuracy measurements. ACV chart points are
 sampled for display; every eligible reading still contributes to its ranking.
-Official test results and uploaded results have separate selectors and exports.
-Legacy one-file browser sessions no longer hide the complete official batch.
+The page opens with complete official test results, without a source selector.
+New uploads open immediately; reloading restores the full official batch.
+Previous one-file browser sessions therefore cannot hide the complete batch.
 
 Only the Cloud Run application is public. Storage, Firestore and credentials
 must not be made public. Firestore access uses database-scoped IAM. The static

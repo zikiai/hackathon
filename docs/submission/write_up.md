@@ -21,9 +21,10 @@ temperature-gap comparisons; SHM shows stress/cycle evidence and a damage estima
 Guidance turns each result into a proposed technician check, not an automatic
 maintenance command.
 
-Official test batches and uploaded results are separate views. A small exploratory
-upload therefore need not hide the complete official batch. Downloads follow the
-selected view and preserve each component's required output schema.
+The complete official test batch is shown when the page opens. New uploads open
+their predictions immediately; reloading restores the complete test batch rather
+than a previous single-file upload. Downloads follow the displayed results and
+preserve each component's required output schema.
 
 ## Modelling approach
 

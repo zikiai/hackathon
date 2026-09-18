@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-const storage=new Map([['nx-result-ids',JSON.stringify({rail:['old-test']})]]);
+const storage=new Map([['nx-result-ids',JSON.stringify({rail:['old-test']})],['nx-result-sources',JSON.stringify({rail:'uploaded'})]]);
 globalThis.localStorage={getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)};
 const events=[];
 globalThis.document={addEventListener(){},dispatchEvent:e=>events.push(e),getElementById:()=>null};
@@ -13,7 +13,6 @@ assert.equal(client.liveResult('rail'),undefined);
 assert.equal(client.liveResult('acv').cases.length,1);
 client.setResultSource('rail','uploaded');
 assert.equal(client.liveResult('rail').records.length,1);
-assert.equal(JSON.parse(storage.get('nx-result-sources')).rail,'uploaded');
 client.setResultSource('rail','official');
 assert.equal(client.liveResult('rail'),undefined);
 assert.equal(client.hasUploadedResults('rail'),true,'Switching views preserves uploads');

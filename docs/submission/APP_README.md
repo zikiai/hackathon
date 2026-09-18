@@ -6,8 +6,8 @@
 Select a component in **Review findings** to see the full official test batch.
 Use **New analysis → select component → Browse files → Output predicted result**
 to process new records. Choose **Download predictions → Download CSV** to export
-the selected batch. Switch between **Official test results** and **Uploaded
-results** explicitly; a single upload does not replace the official batch.
+the displayed batch. New upload predictions open immediately; reload the page
+to return to the complete official test batch.
 
 ## Run locally
 

@@ -1,8 +1,7 @@
 const results={};
 const defaults={};
-let sources={};
-try{sources=JSON.parse(localStorage.getItem('nx-result-sources')||'{}');}catch{/* Default to official results. */}
-if(!sources||typeof sources!=='object'||Array.isArray(sources))sources={};
+// Always open the complete official test batch, not a previous one-file upload.
+const sources={};
 const escape=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let files=[], active='', busy=false, message='';
 export const resultSource=component=>sources[component]==='uploaded'&&results[component]?'uploaded':'official';
@@ -11,7 +10,6 @@ export const liveResult=component=>resultSource(component)==='uploaded'?results[
 export function setResultSource(component,source){
   if(source==='uploaded'&&!results[component])return;
   sources[component]=source==='uploaded'?'uploaded':'official';
-  localStorage.setItem('nx-result-sources',JSON.stringify(sources));
   document.dispatchEvent(new CustomEvent('cloud-results',{detail:{component,result:liveResult(component),navigate:false}}));
 }
 export function renderCloudUpload(component){
@@ -26,7 +24,7 @@ function combine(component,parts){
 }
 function apply(component,parts,navigate){
   results[component]=combine(component,parts);
-  if(navigate){sources[component]='uploaded';localStorage.setItem('nx-result-sources',JSON.stringify(sources));}
+  if(navigate)sources[component]='uploaded';
   document.dispatchEvent(new CustomEvent('cloud-results',{detail:{component,result:liveResult(component),navigate}}));
 }
 document.addEventListener('change',event=>{

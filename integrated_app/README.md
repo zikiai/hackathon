@@ -7,10 +7,9 @@ contains the ACV adapter/older preview server and is not the full application.
 [Public app](https://nebulax-workspace-1029817906638.asia-southeast1.run.app/) ·
 [Team README](../README.md) · [Cloud setup](CLOUD_DEPLOYMENT.md)
 
-Use **Official test results** for the complete saved test batch and **Uploaded
-results** for the latest successfully processed upload. Downloads follow this
-selection. Legacy single-file sessions default to the official batch on upgrade;
-saved uploads remain available through the selector.
+The complete saved test batch appears on page load. A successful new upload opens
+its predictions immediately. Reloading returns to the full test batch, so an old
+single-file upload cannot hide it. Downloads follow the displayed results.
 
 For local uploads with all four components, install `requirements-cloud.txt`
 and ensure the trusted Rail/Door model bundles exist, then run from this folder:

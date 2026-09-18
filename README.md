@@ -9,16 +9,16 @@ operation, air conditioning and structural health. Built for Nebula X PS3.
 
 ## Try it
 
-1. Open **Review findings** and select a component. **Official test results** shows
+1. Open **Review findings** and select a component. The page initially shows
    the complete prepared batch: 68 rail recordings, 38 detected door movements,
    one ACV workbook and 16 structural-health recordings.
 2. Choose **New analysis** and upload recordings. Rail, Door and SHM use CSV;
    ACV uses XLSX. Door takes one continuous recording.
 3. Click **Output predicted result**. Review the prediction, measured evidence
-   and suggested technician check. Uploads appear under **Uploaded results**;
-   switch back to **Official test results** without losing the uploaded batch.
+   and suggested technician check. New upload predictions open immediately.
+   Reload the page to return to the complete official test results.
 4. Choose **Download predictions → Download CSV**. The export matches the
-   selected result source; a one-file upload does not export the full test set.
+   displayed results; a one-file upload does not export the full test set.
 
 No login is required. Files are limited to 28 MiB each. Uploads use the saved
 pipelines without retraining. Results are private to the current browser and
