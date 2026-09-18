@@ -51,9 +51,9 @@ Instance limits reduce exposure but are not a hard spending cap.
 
 ## Build prerequisites
 
-The two gitignored bundles must exist before building:
+These two bundles must exist before building:
 `rail_corrugation/artifacts/rail_model.joblib` and
-`door/artifacts/door_selected.joblib`. SHM uses the tracked
+`door/artifacts/door_selected.joblib`. Rail is tracked from the selected shared-side release; Door remains gitignored. SHM uses the tracked
 `shm/shm_shape_model.joblib`. Copy only trusted trained bundles; never load a
 user-uploaded pickle/joblib file. Dependency versions are in
 `integrated_app/requirements-cloud.txt`.

@@ -1,9 +1,9 @@
 {
   "rail": {
-    "score": 0.823353,
-    "model": "Random Forest with class balancing",
-    "evaluation": "Five-fold cross-validation on 272 labelled training recordings. Mean macro F1 across five split seeds: 0.822854.",
-    "rationale": "Random Forest captures combinations of vibration and shock features. Feature selection and class balancing help detect the rarer faults. We retained this model because the tested alternatives did not improve its validation score."
+    "score": 0.8278080902196089,
+    "model": "Shared-side Random Forest",
+    "evaluation": "Five-fold validation on 272 labelled recordings, averaged across three splits. Two additional splits averaged 0.8182. These checks reuse training data and are not an independent holdout.",
+    "rationale": "One shared detector learns fault patterns from both rail sides. It uses 20 selected features and checks each side against a 0.40 score threshold. This version improved average training-validation results and was retained after the team reported approximately 0.83 on the competition scorer."
   },
   "door": {
     "score": 1,

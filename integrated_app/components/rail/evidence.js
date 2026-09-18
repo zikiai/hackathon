@@ -1,6 +1,6 @@
 export const evidence = {
-  "source": "Computed from local unlabelled Rail Test recordings using the saved pipeline; complete test-file results.",
-  "model_sha256": "18e40f641d79c2d0e5bff2c404f6ef55a11f037520e682f46b5450def9caaaf1",
+  "source": "Computed from all 68 unlabelled test files using shared-side-20-t040.",
+  "model_sha256": "1627d727ecbf9a6917c70e69d9cf246f333bf266cef615ddb98262f5026c5fe8",
   "records": [
     {
       "id": "Test1.csv",
@@ -17,10 +17,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 3.0792236328125
       },
       "scores": {
-        "Normal": 0.9975012493753124,
-        "Side I": 0.0014992503748125939,
-        "Side II": 0.0009995002498750627
+        "Normal": 0.9937599206349206,
+        "Side I": 0.0,
+        "Side II": 0.006240079365079365
       },
+      "sideScores": {
+        "Side I": 0.0,
+        "Side II": 0.006240079365079365
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "b6c0fb2ece1d9ca68372e77861d526eab1c7b3005a3389b771b0821388eb8308"
     },
     {
@@ -38,10 +44,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 0.2193450927734375
       },
       "scores": {
-        "Normal": 1.0,
-        "Side I": 0.0,
+        "Normal": 0.9942929292929293,
+        "Side I": 0.005707070707070707,
         "Side II": 0.0
       },
+      "sideScores": {
+        "Side I": 0.005707070707070707,
+        "Side II": 0.0
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "44088b958a1982c587671925a6a127fa417ca0c4cb613ecd7568e42a4be42718"
     },
     {
@@ -59,10 +71,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 0.7598876953125
       },
       "scores": {
-        "Normal": 1.0,
-        "Side I": 0.0,
+        "Normal": 0.99775,
+        "Side I": 0.0022500000000000003,
         "Side II": 0.0
       },
+      "sideScores": {
+        "Side I": 0.0022500000000000003,
+        "Side II": 0.0
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "cb6df3b4d57d98f24e9be156a49402c5f7405ee161e5f430aa780f8ab52a5fe5"
     },
     {
@@ -80,10 +98,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 1.2882232666015625
       },
       "scores": {
-        "Normal": 0.9945027486256872,
-        "Side I": 0.0014992503748125939,
-        "Side II": 0.003998000999500251
+        "Normal": 0.9753273571856372,
+        "Side I": 0.01177879816330605,
+        "Side II": 0.012893844651056672
       },
+      "sideScores": {
+        "Side I": 0.01191919191919192,
+        "Side II": 0.013047528860028862
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "a541d211678b5172b6c4b123c7d8d409cfd52584a4e23e01f810cbe7aa1c9c67"
     },
     {
@@ -101,10 +125,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 1.654815673828125
       },
       "scores": {
-        "Normal": 0.6315929802857158,
-        "Side I": 0.3124156797082052,
-        "Side II": 0.05599134000607908
+        "Normal": 0.8706915845261003,
+        "Side I": 0.09470430985098657,
+        "Side II": 0.034604105622913044
       },
+      "sideScores": {
+        "Side I": 0.09809893578643576,
+        "Side II": 0.03584447150072151
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "0c6092ca214981e1dfd03ef68d0d2eadead47b92978d62cdc337f7e51e58ce9f"
     },
     {
@@ -122,10 +152,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 1.7299652099609375
       },
       "scores": {
-        "Normal": 0.9934429345243752,
-        "Side I": 0.00655706547562482,
-        "Side II": 0.0
+        "Normal": 0.9604998732696708,
+        "Side I": 0.020775189599900313,
+        "Side II": 0.018724937130428873
       },
+      "sideScores": {
+        "Side I": 0.021171626984126984,
+        "Side II": 0.019082251082251082
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "8aa211140b90fda095e7d92f258821e9c1b748301b20ebc77cfc0b021e73abae"
     },
     {
@@ -143,10 +179,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 2.2724151611328125
       },
       "scores": {
-        "Normal": 0.99028158484924,
-        "Side I": 0.00971841515076003,
-        "Side II": 0.0
+        "Normal": 0.9550931532428424,
+        "Side I": 0.025597639407920317,
+        "Side II": 0.019309207349237367
       },
+      "sideScores": {
+        "Side I": 0.026101641414141414,
+        "Side II": 0.01968939393939394
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "9e033001b1098b325d21176e4f29a8bff474a4d0d25315d2aec1f00e5a672d97"
     },
     {
@@ -164,16 +206,22 @@ export const evidence = {
         "side2_vibration_peak_mean": 3.142547607421875
       },
       "scores": {
-        "Normal": 0.8934560095726274,
-        "Side I": 0.08940381288100513,
-        "Side II": 0.01714017754636741
+        "Normal": 0.9308789599840247,
+        "Side I": 0.00633835684497373,
+        "Side II": 0.06278268317100164
       },
+      "sideScores": {
+        "Side I": 0.00637878787878788,
+        "Side II": 0.06318316058941059
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "0f9985f348e9d2024cc5891740693404482f862d0433197736dde8e3388131ee"
     },
     {
       "id": "Test9.csv",
       "file": "Test9.csv",
-      "prediction": "Normal",
+      "prediction": "Side II",
       "rows": 10000,
       "channels": 128,
       "stats": {
@@ -185,10 +233,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 1.8688201904296875
       },
       "scores": {
-        "Normal": 0.6802843243797895,
-        "Side I": 0.061608279734891774,
-        "Side II": 0.2581073958853188
+        "Normal": 0.40227511853293474,
+        "Side I": 0.025290922705253707,
+        "Side II": 0.5724339587618115
       },
+      "sideScores": {
+        "Side I": 0.025947150072150076,
+        "Side II": 0.5872869885961992
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "c9bfb72a5e24b1fc478ecd0eb973f3c96f58af67d20d5c0002b06be78e051b30"
     },
     {
@@ -206,10 +260,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 5.1876068115234375
       },
       "scores": {
-        "Normal": 0.6559429160847768,
-        "Side I": 0.3257832695907599,
-        "Side II": 0.01827381432446314
+        "Normal": 0.6863618518891951,
+        "Side I": 0.25066440786804584,
+        "Side II": 0.0629737402427592
       },
+      "sideScores": {
+        "Side I": 0.2675105476051295,
+        "Side II": 0.0672059502997003
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "04afaf49f74058337ff0615d672ac30a70804d41b5a353f5c5e396d911bf614b"
     },
     {
@@ -227,10 +287,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 2.3578643798828125
       },
       "scores": {
-        "Normal": 0.9783325649845741,
-        "Side I": 0.021170963509344304,
-        "Side II": 0.000496471506081776
+        "Normal": 0.9219293641203015,
+        "Side I": 0.045993947162106995,
+        "Side II": 0.032076688717591534
       },
+      "sideScores": {
+        "Side I": 0.0475181727994228,
+        "Side II": 0.03313970057720058
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "a4f6f15e8ea98092a6a3971aba3a967017b34111ca7b3344d8327396973baa03"
     },
     {
@@ -248,16 +314,22 @@ export const evidence = {
         "side2_vibration_peak_mean": 3.6197662353515625
       },
       "scores": {
-        "Normal": 0.9652371991680697,
-        "Side I": 0.02882044171536099,
-        "Side II": 0.005942359116569278
+        "Normal": 0.8881595899797516,
+        "Side I": 0.07554768663443699,
+        "Side II": 0.03629272338581141
       },
+      "sideScores": {
+        "Side I": 0.0783927738927739,
+        "Side II": 0.03765948879551821
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "e63e8db0660cf9d55599f6ad37a5dc9526a5f0e1386c4896ff29aa865bf48aaf"
     },
     {
       "id": "Test13.csv",
       "file": "Test13.csv",
-      "prediction": "Side I",
+      "prediction": "Normal",
       "rows": 10000,
       "channels": 128,
       "stats": {
@@ -269,16 +341,22 @@ export const evidence = {
         "side2_vibration_peak_mean": 2.605438232421875
       },
       "scores": {
-        "Normal": 0.31144078593471314,
-        "Side I": 0.6218113869935732,
-        "Side II": 0.0667478270717137
+        "Normal": 0.5833068533673922,
+        "Side I": 0.1683719374448185,
+        "Side II": 0.24832120918778924
       },
+      "sideScores": {
+        "Side I": 0.2024606251591545,
+        "Side II": 0.29859647644022624
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "2ac0a0e113b918b1612408e6b3e22e38e9a1fd5a1d7668a07b9bdb15092ba5d7"
     },
     {
       "id": "Test14.csv",
       "file": "Test14.csv",
-      "prediction": "Normal",
+      "prediction": "Side II",
       "rows": 10000,
       "channels": 128,
       "stats": {
@@ -290,10 +368,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 4.3292999267578125
       },
       "scores": {
-        "Normal": 0.4820242399224109,
-        "Side I": 0.2035980371921462,
-        "Side II": 0.31437772288544297
+        "Normal": 0.33980147266250843,
+        "Side I": 0.059994307255237536,
+        "Side II": 0.6002042200822542
       },
+      "sideScores": {
+        "Side I": 0.06382334460130513,
+        "Side II": 0.6385112608517214
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "70c980e40e2248ac766736d00e1702a0a4048986e4bfeea90e9967a7d1444d67"
     },
     {
@@ -315,6 +399,12 @@ export const evidence = {
         "Side I": 0.0,
         "Side II": 0.0
       },
+      "sideScores": {
+        "Side I": 0.0,
+        "Side II": 0.0
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "c77ad018f079e79676adbc9395b054d1f2bb6198b5ac59596e1964c5dbf6187c"
     },
     {
@@ -332,10 +422,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 1.3759613037109375
       },
       "scores": {
-        "Normal": 0.9078385280765519,
-        "Side I": 0.09051276248885852,
-        "Side II": 0.0016487094345896468
+        "Normal": 0.9442127498287822,
+        "Side I": 0.04046716525856019,
+        "Side II": 0.015320084912657614
       },
+      "sideScores": {
+        "Side I": 0.04109677128427129,
+        "Side II": 0.01555844155844156
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "9087587cd33584f7f2b9a629e4e589f208e77331e3a5564acbf25bb5710e3b21"
     },
     {
@@ -353,10 +449,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 2.3284912109375
       },
       "scores": {
-        "Normal": 0.9484933919054355,
-        "Side I": 0.04953963451757633,
-        "Side II": 0.001966973576988283
+        "Normal": 0.99775,
+        "Side I": 0.0022500000000000003,
+        "Side II": 0.0
       },
+      "sideScores": {
+        "Side I": 0.0022500000000000003,
+        "Side II": 0.0
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "6a6c318d32c36da7c5a9c5bf33da69925783a9c7202176dcc1e01551665cc877"
     },
     {
@@ -374,10 +476,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 1.3462066650390625
       },
       "scores": {
-        "Normal": 0.9771144278606966,
-        "Side I": 0.01492537313432836,
-        "Side II": 0.007960199004975126
+        "Normal": 0.9478284835546001,
+        "Side I": 0.011818870890766683,
+        "Side II": 0.040352645554633144
       },
+      "sideScores": {
+        "Side I": 0.011960227272727273,
+        "Side II": 0.04083527236652237
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "021987fc17ee047706c151b51a18b1c881ac7411006788d462bd176fe82f8193"
     },
     {
@@ -395,10 +503,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 1.8604278564453125
       },
       "scores": {
-        "Normal": 1.0,
+        "Normal": 0.977125,
         "Side I": 0.0,
-        "Side II": 0.0
+        "Side II": 0.022875
       },
+      "sideScores": {
+        "Side I": 0.0,
+        "Side II": 0.022875
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "35e27af221b75ed7d83d84a1a77e45867a8cd044ba65d257f99ef4da3440dab7"
     },
     {
@@ -420,6 +534,12 @@ export const evidence = {
         "Side I": 0.0,
         "Side II": 0.0
       },
+      "sideScores": {
+        "Side I": 0.0,
+        "Side II": 0.0
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "00eba86cf62bc28e2cdfe4152145b567d95575a8c2f44e839e8e24659d292fb3"
     },
     {
@@ -437,10 +557,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 1.73797607421875
       },
       "scores": {
-        "Normal": 0.9970029970029971,
-        "Side I": 0.0029970029970029974,
-        "Side II": 0.0
+        "Normal": 0.982378824100059,
+        "Side I": 0.0021827252884315564,
+        "Side II": 0.015438450611509544
       },
+      "sideScores": {
+        "Side I": 0.0021875,
+        "Side II": 0.01547222222222222
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "c367951d4568020dcc22262b4e1a098b83354932dd74489ff5a49b24e2302c7a"
     },
     {
@@ -458,10 +584,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 1.3729095458984375
       },
       "scores": {
-        "Normal": 0.10692389738980462,
-        "Side I": 0.7938311901492813,
-        "Side II": 0.0992449124609142
+        "Normal": 0.345063254568132,
+        "Side I": 0.6005524038157781,
+        "Side II": 0.054384341616089814
       },
+      "sideScores": {
+        "Side I": 0.6350914332807717,
+        "Side II": 0.05751209926983922
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "d9eee74f3234d53fb4916faf3a38f6867e2eb1ae1473273827027d2bdb2d786f"
     },
     {
@@ -479,10 +611,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 2.9590606689453125
       },
       "scores": {
-        "Normal": 1.0,
+        "Normal": 0.9630799512987013,
         "Side I": 0.0,
-        "Side II": 0.0
+        "Side II": 0.03692004870129871
       },
+      "sideScores": {
+        "Side I": 0.0,
+        "Side II": 0.03692004870129871
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "c09be8097420c8d73032f48659b9ffac1af1fe3b621a32c61ad33abe2a1768a9"
     },
     {
@@ -500,10 +638,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 2.8392791748046875
       },
       "scores": {
-        "Normal": 0.9962521862247024,
-        "Side I": 0.0017489797618056135,
-        "Side II": 0.00199883401349213
+        "Normal": 0.9975,
+        "Side I": 0.0,
+        "Side II": 0.0025
       },
+      "sideScores": {
+        "Side I": 0.0,
+        "Side II": 0.0025
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "2e10dac078b8ccea600990a6abf2ba06ff058e6bdb931d289fb0374b00efd80c"
     },
     {
@@ -521,10 +665,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 1.6216278076171875
       },
       "scores": {
-        "Normal": 0.9970029970029971,
-        "Side I": 0.0029970029970029974,
-        "Side II": 0.0
+        "Normal": 0.9822436075923626,
+        "Side I": 0.008875693364660537,
+        "Side II": 0.008880699042976876
       },
+      "sideScores": {
+        "Side I": 0.008955176767676768,
+        "Side II": 0.008960227272727272
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "f870934b41dc6921659a8f55c2cfb10cc761807cbbd9e0520bd44d2e3b1a1ece"
     },
     {
@@ -542,10 +692,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 3.3145904541015625
       },
       "scores": {
-        "Normal": 0.0647060076038431,
-        "Side I": 0.01902853452130567,
-        "Side II": 0.9162654578748514
+        "Normal": 0.021102236580594947,
+        "Side I": 0.032694203126889275,
+        "Side II": 0.9462035602925158
       },
+      "sideScores": {
+        "Side I": 0.033799242424242426,
+        "Side II": 0.9781845238095238
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "5647c78937690e8e0f1d60dbd73a042ee477601a5aba03085d63a891e696b3c5"
     },
     {
@@ -563,10 +719,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 1.37481689453125
       },
       "scores": {
-        "Normal": 0.20640751350003456,
-        "Side I": 0.7368975799472361,
-        "Side II": 0.05669490655272922
+        "Normal": 0.26214796220918657,
+        "Side I": 0.735980546836353,
+        "Side II": 0.0018714909544603866
       },
+      "sideScores": {
+        "Side I": 0.7373605103616713,
+        "Side II": 0.001875
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "3ba202c05007ad44a07affbe639e51399dd9e3b006748223a9b4cef32343b814"
     },
     {
@@ -584,10 +746,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 3.6548614501953125
       },
       "scores": {
-        "Normal": 0.8773521013325523,
-        "Side I": 0.11707424220237223,
-        "Side II": 0.005573656465075413
+        "Normal": 0.9455348197777294,
+        "Side I": 0.024576227722743534,
+        "Side II": 0.02988895249952714
       },
+      "sideScores": {
+        "Side I": 0.02519543650793651,
+        "Side II": 0.030642017704517705
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "f85d807c15ef9aee2e6187a60e35bd6acd882230c7a794e552a79a9c3db41ed4"
     },
     {
@@ -605,10 +773,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 1.4865875244140625
       },
       "scores": {
-        "Normal": 0.9713480818626232,
-        "Side I": 0.017151379567486948,
-        "Side II": 0.011500538569889798
+        "Normal": 0.8346568704732112,
+        "Side I": 0.019218644186535277,
+        "Side II": 0.14612448534025352
       },
+      "sideScores": {
+        "Side I": 0.019595238095238096,
+        "Side II": 0.1489878294220399
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "a35b32027045b96853aca799e5035f89949ebb74e80759b63a0a9897eaf245ee"
     },
     {
@@ -626,10 +800,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 1.569366455078125
       },
       "scores": {
-        "Normal": 1.0,
+        "Normal": 0.9976470588235294,
         "Side I": 0.0,
-        "Side II": 0.0
+        "Side II": 0.002352941176470588
       },
+      "sideScores": {
+        "Side I": 0.0,
+        "Side II": 0.002352941176470588
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "92eda425a48e5cd5e96308267b7bd539c09b43605a1ba64597bad8808efc77b3"
     },
     {
@@ -651,6 +831,12 @@ export const evidence = {
         "Side I": 0.0,
         "Side II": 0.0
       },
+      "sideScores": {
+        "Side I": 0.0,
+        "Side II": 0.0
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "2c863df7c2fd886eed519413927eae37d08d2cb27b5374a579f3fbb1dbbf79b4"
     },
     {
@@ -668,10 +854,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 1.610565185546875
       },
       "scores": {
-        "Normal": 0.2795106811759364,
-        "Side I": 0.6357179223839969,
-        "Side II": 0.0847713964400667
+        "Normal": 0.5616306156541255,
+        "Side I": 0.4383693843458745,
+        "Side II": 0.0
       },
+      "sideScores": {
+        "Side I": 0.4383693843458745,
+        "Side II": 0.0
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "0e25303a2bbeb805a4db7735c48ec6d17f36f5de3dbaaa0a5724a6ea9c1d1269"
     },
     {
@@ -689,10 +881,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 3.1036376953125
       },
       "scores": {
-        "Normal": 0.15741029612723015,
-        "Side I": 0.7011871726244233,
-        "Side II": 0.14140253124834662
+        "Normal": 0.04625221668007364,
+        "Side I": 0.5881313770586021,
+        "Side II": 0.36561640626132424
       },
+      "sideScores": {
+        "Side I": 0.9270910894660896,
+        "Side II": 0.5763333255619062
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "af1db82b55771c5d59975576cfdfa3b7ee62fcc6b18e79c7cf1158c148eb3448"
     },
     {
@@ -710,10 +908,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 3.1681060791015625
       },
       "scores": {
-        "Normal": 0.9993333333333334,
-        "Side I": 0.0,
-        "Side II": 0.0006666666666666666
+        "Normal": 0.9080917079268412,
+        "Side I": 0.08297102988397191,
+        "Side II": 0.008937262189186798
       },
+      "sideScores": {
+        "Side I": 0.0837192507784613,
+        "Side II": 0.009017857142857143
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "7c451ef37c8fbe33ad13c9b1918d6e53fb7bfb370aedee435f04b7f41ab4518b"
     },
     {
@@ -731,10 +935,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 2.698516845703125
       },
       "scores": {
-        "Normal": 0.9118373463328,
-        "Side I": 0.086220133756371,
-        "Side II": 0.0019425199108290862
+        "Normal": 0.9591849185297462,
+        "Side I": 0.03391852974611596,
+        "Side II": 0.006896551724137931
       },
+      "sideScores": {
+        "Side I": 0.034154075091575094,
+        "Side II": 0.006944444444444444
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "dd34e5b81e60a0696ae1227ec9d0446e1e94c2b7a9c69e71cf8d34698eb806ab"
     },
     {
@@ -752,10 +962,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 1.9466400146484375
       },
       "scores": {
-        "Normal": 0.882639512096848,
-        "Side I": 0.11543744620061903,
-        "Side II": 0.0019230417025329206
+        "Normal": 0.742125765790246,
+        "Side I": 0.04263627301616631,
+        "Side II": 0.21523796119358765
       },
+      "sideScores": {
+        "Side I": 0.044535082972582976,
+        "Side II": 0.22482360165419368
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "025ac30e550fa1e4b8514dc3d9119d52bf496ec5b9030b44d16456100a83e876"
     },
     {
@@ -773,10 +989,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 4.1904449462890625
       },
       "scores": {
-        "Normal": 0.17737093847930066,
-        "Side I": 0.031172686788718457,
-        "Side II": 0.7914563747319808
+        "Normal": 0.0748062501969049,
+        "Side I": 0.09361519197440396,
+        "Side II": 0.8315785578286912
       },
+      "sideScores": {
+        "Side I": 0.10328415827966998,
+        "Side II": 0.9174674492174494
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "1818610aea7a241ad301eb7b7c08ff8b45bed3b9d5cd754c2ceb6cf073b3cc83"
     },
     {
@@ -794,10 +1016,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 1.70745849609375
       },
       "scores": {
-        "Normal": 0.9940119760479041,
-        "Side I": 0.005988023952095809,
-        "Side II": 0.0
+        "Normal": 0.9741018144313971,
+        "Side I": 0.018190202933713165,
+        "Side II": 0.007707982634889696
       },
+      "sideScores": {
+        "Side I": 0.01833150183150183,
+        "Side II": 0.007767857142857143
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "a6370bf4cdb0c88949dfc7966cb9358d376696ffb47d4e8d99776c5485ba0a87"
     },
     {
@@ -819,6 +1047,12 @@ export const evidence = {
         "Side I": 0.0,
         "Side II": 0.0
       },
+      "sideScores": {
+        "Side I": 0.0,
+        "Side II": 0.0
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "66ae5d573fa3a14149703389881a8ac132365e6775395359050b35702129ca1a"
     },
     {
@@ -836,10 +1070,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 2.051544189453125
       },
       "scores": {
-        "Normal": 1.0,
-        "Side I": 0.0,
-        "Side II": 0.0
+        "Normal": 0.9861777601599833,
+        "Side I": 0.0021382751247327157,
+        "Side II": 0.011683964715284158
       },
+      "sideScores": {
+        "Side I": 0.0021428571428571425,
+        "Side II": 0.011709001782531194
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "7cf5c41fea86f1bedcc37fa345b8d06cc1f8fe907bba715c31ba6c95bee6f3ba"
     },
     {
@@ -861,6 +1101,12 @@ export const evidence = {
         "Side I": 0.0,
         "Side II": 0.0
       },
+      "sideScores": {
+        "Side I": 0.0,
+        "Side II": 0.0
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "34c56ab6c1785430696060796b423a32c1c616cfd4838020bf32337f758554bc"
     },
     {
@@ -878,10 +1124,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 2.6470184326171875
       },
       "scores": {
-        "Normal": 0.9321584465385713,
-        "Side I": 0.0627830130950924,
-        "Side II": 0.005058540366336228
+        "Normal": 0.9195097019829255,
+        "Side I": 0.06537120363851673,
+        "Side II": 0.015119094378557735
       },
+      "sideScores": {
+        "Side I": 0.06637472943722944,
+        "Side II": 0.015351190476190477
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "22d711c25b36956401d0fba559cbe1dab22b1bca730baeccfd4866fbe1bff8cf"
     },
     {
@@ -899,10 +1151,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 2.814483642578125
       },
       "scores": {
-        "Normal": 0.09975660227718171,
-        "Side I": 0.12845383191883097,
-        "Side II": 0.7717895658039874
+        "Normal": 0.013190350713538563,
+        "Side I": 0.26973836880062796,
+        "Side II": 0.7170712804858335
       },
+      "sideScores": {
+        "Side I": 0.3693722321924722,
+        "Side II": 0.9819375000000001
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "16bcbf30b3e873028f34ca416b53a8ca79eef762c15a2ac0b10c3134d2273132"
     },
     {
@@ -920,16 +1178,22 @@ export const evidence = {
         "side2_vibration_peak_mean": 0.707244873046875
       },
       "scores": {
-        "Normal": 1.0,
+        "Normal": 0.9976470588235294,
         "Side I": 0.0,
-        "Side II": 0.0
+        "Side II": 0.002352941176470588
       },
+      "sideScores": {
+        "Side I": 0.0,
+        "Side II": 0.002352941176470588
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "1f9dfce8ca525b7fe19f117c4578da14a6f48b4ba8935875adfa7d61f6bf35c3"
     },
     {
       "id": "Test45.csv",
       "file": "Test45.csv",
-      "prediction": "Side I",
+      "prediction": "Normal",
       "rows": 10000,
       "channels": 128,
       "stats": {
@@ -941,10 +1205,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 3.4679412841796875
       },
       "scores": {
-        "Normal": 0.30430258103472646,
-        "Side I": 0.6874751082390124,
-        "Side II": 0.008222310726261289
+        "Normal": 0.7465632690658008,
+        "Side I": 0.21824959736995134,
+        "Side II": 0.03518713356424781
       },
+      "sideScores": {
+        "Side I": 0.2262092525530025,
+        "Side II": 0.03647042321713374
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "07b3b80568af08d98b9a9b5758fa3635474413a6d99661a0bcd2ffc26be4c362"
     },
     {
@@ -962,10 +1232,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 4.8351287841796875
       },
       "scores": {
-        "Normal": 0.6263355153193088,
-        "Side I": 0.3492183875884515,
-        "Side II": 0.02444609709223984
+        "Normal": 0.6260863200113054,
+        "Side I": 0.2443927320069596,
+        "Side II": 0.12952094798173494
       },
+      "sideScores": {
+        "Side I": 0.28075659194821334,
+        "Side II": 0.14879272244568298
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "2982d7e5caf9e8da8e3400be8942d19ceab151a373369a27424df1d5b112d35b"
     },
     {
@@ -987,6 +1263,12 @@ export const evidence = {
         "Side I": 0.0,
         "Side II": 0.0
       },
+      "sideScores": {
+        "Side I": 0.0,
+        "Side II": 0.0
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "671c70d30c77ee0d72245ad08ccacac75e197dd23bbc48fb05cc23d03b04b3ab"
     },
     {
@@ -1008,12 +1290,18 @@ export const evidence = {
         "Side I": 0.0,
         "Side II": 0.0
       },
+      "sideScores": {
+        "Side I": 0.0,
+        "Side II": 0.0
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "993b9ee0454c9ea59caf9828bc2d26ac14f0ed58ffe7d88583f2667a99f0f8e5"
     },
     {
       "id": "Test49.csv",
       "file": "Test49.csv",
-      "prediction": "Normal",
+      "prediction": "Side II",
       "rows": 10000,
       "channels": 128,
       "stats": {
@@ -1025,10 +1313,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 1.529693603515625
       },
       "scores": {
-        "Normal": 0.9761873263659215,
-        "Side I": 0.023415795740177266,
-        "Side II": 0.0003968778939013097
+        "Normal": 0.551889706543661,
+        "Side I": 0.0021827252884315564,
+        "Side II": 0.4459275681679075
       },
+      "sideScores": {
+        "Side I": 0.0021875,
+        "Side II": 0.4469030347232747
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "69698e1d7307ea6d66c9b4cc40d7a169f0e4205139ef00fd75bbbc2e6d754b2d"
     },
     {
@@ -1046,10 +1340,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 0.225830078125
       },
       "scores": {
-        "Normal": 1.0,
+        "Normal": 0.9976470588235294,
         "Side I": 0.0,
-        "Side II": 0.0
+        "Side II": 0.002352941176470588
       },
+      "sideScores": {
+        "Side I": 0.0,
+        "Side II": 0.002352941176470588
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "ac4d572dbde91e2a031528b008ac742552226f067b288dbaffb5b06869fb2401"
     },
     {
@@ -1071,6 +1371,12 @@ export const evidence = {
         "Side I": 0.0,
         "Side II": 0.0
       },
+      "sideScores": {
+        "Side I": 0.0,
+        "Side II": 0.0
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "12a393018a9f410e09bff061cfa3eb57349240c5b1fc8df985edea47efa2e6f5"
     },
     {
@@ -1088,10 +1394,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 2.81524658203125
       },
       "scores": {
-        "Normal": 0.999,
-        "Side I": 0.0,
-        "Side II": 0.001
+        "Normal": 0.9837280705544179,
+        "Side I": 0.001996007984031936,
+        "Side II": 0.014275921461550205
       },
+      "sideScores": {
+        "Side I": 0.002,
+        "Side II": 0.014304473304473306
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "b34f9be3f2a3aaf08625931b4b10da17431eb46a4f5bbd0e176b657a2e0909cc"
     },
     {
@@ -1109,10 +1421,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 1.9153594970703125
       },
       "scores": {
-        "Normal": 0.9985007496251874,
-        "Side I": 0.0014992503748125939,
-        "Side II": 0.0
+        "Normal": 0.9935059792508116,
+        "Side I": 0.004355745624455532,
+        "Side II": 0.0021382751247327153
       },
+      "sideScores": {
+        "Side I": 0.004365079365079365,
+        "Side II": 0.0021428571428571425
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "4bac929578b3e890af4d1e9c284fd3f92a457e61b8286c4651319a612063b6b1"
     },
     {
@@ -1130,10 +1448,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 3.0902862548828125
       },
       "scores": {
-        "Normal": 0.9986,
+        "Normal": 1.0,
         "Side I": 0.0,
-        "Side II": 0.0014
+        "Side II": 0.0
       },
+      "sideScores": {
+        "Side I": 0.0,
+        "Side II": 0.0
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "2bff809408509ada6c9b413d81e8de07eb5ee4a0b1669a9d06d1de98aa7be3be"
     },
     {
@@ -1151,10 +1475,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 0.6465911865234375
       },
       "scores": {
-        "Normal": 1.0,
+        "Normal": 0.998125,
         "Side I": 0.0,
-        "Side II": 0.0
+        "Side II": 0.001875
       },
+      "sideScores": {
+        "Side I": 0.0,
+        "Side II": 0.001875
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "88dc16b2fb474833ab1d4a04374458c2ab491aa0c067e07214c8d48d1683ac0a"
     },
     {
@@ -1172,10 +1502,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 4.1149139404296875
       },
       "scores": {
-        "Normal": 0.7265251423872324,
-        "Side I": 0.2588554198519782,
-        "Side II": 0.01461943776078945
+        "Normal": 0.915156562268167,
+        "Side I": 0.035014996082794465,
+        "Side II": 0.04982844164903853
       },
+      "sideScores": {
+        "Side I": 0.036285533910533914,
+        "Side II": 0.05163649325820378
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "75f2871300294677dbe077cf4511096221e613c8ff9b5d6f210cfa940757b296"
     },
     {
@@ -1193,10 +1529,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 1.65557861328125
       },
       "scores": {
-        "Normal": 1.0,
+        "Normal": 0.8982486608034208,
         "Side I": 0.0,
-        "Side II": 0.0
+        "Side II": 0.10175133919657915
       },
+      "sideScores": {
+        "Side I": 0.0,
+        "Side II": 0.10175133919657915
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "9d7e84cd64145dcf70784655eb5165463d6bbfdf31c5b65351deb4d196a4d889"
     },
     {
@@ -1218,6 +1560,12 @@ export const evidence = {
         "Side I": 0.0,
         "Side II": 0.0
       },
+      "sideScores": {
+        "Side I": 0.0,
+        "Side II": 0.0
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "41ab3eef8649a630756dfc03f7fa5848785f01964575981a1668e9b7baee4e6f"
     },
     {
@@ -1235,10 +1583,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 2.9621124267578125
       },
       "scores": {
-        "Normal": 0.9804441498176998,
-        "Side I": 0.01690420947961551,
-        "Side II": 0.002651640702684786
+        "Normal": 0.9839943181818182,
+        "Side I": 0.016005681818181818,
+        "Side II": 0.0
       },
+      "sideScores": {
+        "Side I": 0.016005681818181818,
+        "Side II": 0.0
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "c5fc001f0120e5b60624d358bdc28a7f5b63c6b98397a5a038662db8552335b3"
     },
     {
@@ -1260,6 +1614,12 @@ export const evidence = {
         "Side I": 0.0,
         "Side II": 0.0
       },
+      "sideScores": {
+        "Side I": 0.0,
+        "Side II": 0.0
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "6728a48c753f91f10ddf4445cca1b7ce9b994dea77aaded7d6a1f65f8a87855e"
     },
     {
@@ -1281,6 +1641,12 @@ export const evidence = {
         "Side I": 0.0,
         "Side II": 0.0
       },
+      "sideScores": {
+        "Side I": 0.0,
+        "Side II": 0.0
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "693c1b67dc5c881933c465877b4fd88843dc71a5ff14449b2bfbf9750d4f40fa"
     },
     {
@@ -1302,6 +1668,12 @@ export const evidence = {
         "Side I": 0.0,
         "Side II": 0.0
       },
+      "sideScores": {
+        "Side I": 0.0,
+        "Side II": 0.0
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "f839349434f66c6977876791853475c3e4af6090cae7cc63e6e5ab1a67247268"
     },
     {
@@ -1319,10 +1691,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 0.6649017333984375
       },
       "scores": {
-        "Normal": 0.9985007496251874,
-        "Side I": 0.0014992503748125939,
+        "Normal": 1.0,
+        "Side I": 0.0,
         "Side II": 0.0
       },
+      "sideScores": {
+        "Side I": 0.0,
+        "Side II": 0.0
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "130c959a368c8d463207de18eeb2657288a5796f73d21b2f95b335ebb7a5b75e"
     },
     {
@@ -1340,10 +1718,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 1.1493682861328125
       },
       "scores": {
-        "Normal": 0.94250018709774,
-        "Side I": 0.053210597215985644,
-        "Side II": 0.00428921568627451
+        "Normal": 0.9686724609651779,
+        "Side I": 0.017845710195431765,
+        "Side II": 0.013481828839390388
       },
+      "sideScores": {
+        "Side I": 0.018089590964590962,
+        "Side II": 0.013666072489601902
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "c6a6efc7fa593d6527ca823a36cc712d395ea5a5e87391a420f7f5e90d497d57"
     },
     {
@@ -1361,10 +1745,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 0.7595062255859375
       },
       "scores": {
-        "Normal": 1.0,
-        "Side I": 0.0,
+        "Normal": 0.9978125,
+        "Side I": 0.0021875,
         "Side II": 0.0
       },
+      "sideScores": {
+        "Side I": 0.0021875,
+        "Side II": 0.0
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "6eb1ecd80d358e88621c736513f606c0aad4ece8c7df935d90d5b95de9aee878"
     },
     {
@@ -1382,10 +1772,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 4.659271240234375
       },
       "scores": {
-        "Normal": 0.030119303735575986,
-        "Side I": 0.06630158419714453,
-        "Side II": 0.9035791120672795
+        "Normal": 0.05797439145226006,
+        "Side I": 0.18486013189721281,
+        "Side II": 0.757165476650527
       },
+      "sideScores": {
+        "Side I": 0.2267833277833276,
+        "Side II": 0.9288779831279831
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "3af3fa39068b53b7f79123875abb134b8f52039c4e81f648f58ad6fd085e7f09"
     },
     {
@@ -1407,6 +1803,12 @@ export const evidence = {
         "Side I": 0.0,
         "Side II": 0.0
       },
+      "sideScores": {
+        "Side I": 0.0,
+        "Side II": 0.0
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "154adeeaf064327459e0690bad9e4d0732877ea43254cb33cfcd3fb041442298"
     },
     {
@@ -1424,10 +1826,16 @@ export const evidence = {
         "side2_vibration_peak_mean": 0.2017974853515625
       },
       "scores": {
-        "Normal": 1.0,
-        "Side I": 0.0,
+        "Normal": 0.9903535353535353,
+        "Side I": 0.009646464646464646,
         "Side II": 0.0
       },
+      "sideScores": {
+        "Side I": 0.009646464646464646,
+        "Side II": 0.0
+      },
+      "faultThreshold": 0.4,
+      "modelVersion": "shared-side-20-t040",
       "source_sha256": "06feb2fc096f9f0e54595381c11e317c3f32e79a376d98d16620640442d9fdcc"
     }
   ]

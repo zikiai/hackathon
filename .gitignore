@@ -14,5 +14,6 @@ __pycache__/
 !**/data/processed/.gitkeep
 **/artifacts/*
 !**/artifacts/.gitkeep
+!rail_corrugation/artifacts/rail_model.joblib
 **/outputs/*
 !**/outputs/.gitkeep

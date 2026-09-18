@@ -78,7 +78,7 @@ def make_model(
 
 
 def make_final_model() -> ImbalancedPipeline:
-    """Build the promoted model with fold-safe moderate SMOTE oversampling."""
+    """Historical SMOTE baseline, retained for reproducible comparisons."""
     return ImbalancedPipeline(
         [
             ("feature_imputer", SimpleImputer(strategy="median")),
@@ -98,6 +98,12 @@ def make_final_model() -> ImbalancedPipeline:
             ("model", make_model(min_samples_split=4, class_weight=None)),
         ]
     )
+
+
+def make_production_model():
+    """Build the shared-side model selected for the final submission."""
+    from rail_cdm.shared_side import SharedSideClassifier
+    return SharedSideClassifier(threshold=0.40, feature_count=20)
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -140,7 +146,7 @@ def main() -> None:
     if folds < 2:
         raise ValueError("At least two files are required in every class for cross-validation.")
 
-    model = make_final_model()
+    model = make_production_model()
     cross_validation = StratifiedKFold(n_splits=folds, shuffle=True, random_state=RANDOM_SEED)
     labels_in_order = ["Normal", "Side I", "Side II"]
     validation_predictions = np.empty(len(dataset), dtype=object)
@@ -168,14 +174,15 @@ def main() -> None:
         "classification_report": report,
         "confusion_matrix_labels": labels_in_order,
         "confusion_matrix": matrix,
-        "decision_adjustment": {"Side I": SIDE_I_PROBABILITY_MULTIPLIER},
+        "decision_rule": "Maximum raw side score >= 0.40; otherwise Normal",
         "training_configuration": {
-            "n_estimators": 500,
+            "n_estimators": 400,
             "max_features": "sqrt",
-            "min_samples_split": 4,
-            "smote_target_per_fault_class": SMOTE_TARGET_PER_FAULT_CLASS,
-            "smote_neighbors": SMOTE_NEIGHBORS,
-            "selected_feature_count": SELECTED_FEATURE_COUNT,
+            "min_samples_leaf": 2,
+            "class_weight": "balanced",
+            "augmentation": "side exchange within each training fold",
+            "selected_feature_count": 20,
+            "fault_threshold": 0.40,
         },
     }
 

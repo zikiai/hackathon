@@ -28,6 +28,8 @@ def main():
             stats={k:float(features[k]) for k in ['side1_vibration_rms_mean','side2_vibration_rms_mean','side1_shock_rms_mean','side2_shock_rms_mean','side1_vibration_peak_mean','side2_vibration_peak_mean']},
             scores={str(k):float(v) for k,v in zip(model.classes_,model.predict_proba(x)[0])},
             source_sha256=hashlib.sha256(source.read_bytes()).hexdigest()))
+        if hasattr(model, 'side_scores'):
+            records[-1].update(sideScores=dict(zip(['Side I','Side II'], map(float,model.side_scores(x)[0]))),faultThreshold=float(model.threshold),modelVersion=bundle.get('model_version','shared-side'))
     result={'source':'Computed from local unlabelled Rail Test recordings using the saved pipeline; complete test-file results.','model_sha256':hashlib.sha256(model_path.read_bytes()).hexdigest(),'records':records}
     a.output.write_text('export const evidence = '+json.dumps(result,indent=2)+';\n')
     print([(r['file'],r['prediction']) for r in records])

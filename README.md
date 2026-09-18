@@ -28,7 +28,7 @@ accessible for seven days; review notes are temporary.
 
 | Component | Selected approach | Development metric |
 |---|---|---|
-| Rail | Signal features, fold-fitted selection/SMOTE, Random Forest | Macro F1 0.823353; five split-seed mean 0.822854 |
+| Rail | Shared-side Random Forest, 20 fold-selected features, threshold 0.40 | Training macro F1 0.827808 (three split seeds); 0.818237 on two additional splits |
 | Door | Gap segmentation, seven current/direction features, small Random Forest | IoU-weighted F1 1.0000 in reused chronological and robustness checks |
 | ACV | Rank cars by mean positive temperature gap during eligible cooling | Linear rank-decay 0.9792 over six development cases |
 | SHM | Rainflow cycle features and Ridge correction of a damage proxy | Teammate-reported grouped MAPE 2.020%; derived score 0.9798 |
@@ -49,9 +49,10 @@ Gemini/Vertex AI are not running the predictions.
 
 ## Run the shared app
 
-The submission app bundle includes the trusted trained models. A Git clone alone
-does **not** include the ignored Rail/Door bundles. Before building, supply
-`rail_corrugation/artifacts/rail_model.joblib` and
+The submission app bundle includes the trusted trained models. The selected Rail
+bundle is tracked at `rail_corrugation/artifacts/rail_model.joblib`; see the
+[rail model release](docs/rail-model-release.md) for validation and reproduction.
+Before building from a Git clone, supply the ignored Door bundle at
 `door/artifacts/door_selected.joblib`. SHM's bundle is tracked.
 Never load an untrusted uploaded pickle/joblib model.
 

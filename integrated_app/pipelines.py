@@ -47,6 +47,10 @@ def analyse_file(component, path, filename):
         record = dict(id=filename,file=filename,prediction=label,rows=len(frame),channels=128,
             stats={k:float(features[k]) for k in ['side1_vibration_rms_mean','side2_vibration_rms_mean','side1_shock_rms_mean','side2_shock_rms_mean','side1_vibration_peak_mean','side2_vibration_peak_mean']},
             scores={str(k):float(v) for k,v in zip(bundle['model'].classes_,bundle['model'].predict_proba(x)[0])})
+        if hasattr(bundle['model'], 'side_scores'):
+            record['sideScores'] = dict(zip(['Side I','Side II'], map(float, bundle['model'].side_scores(x)[0])))
+            record['faultThreshold'] = float(bundle['model'].threshold)
+            record['modelVersion'] = 'shared-side-20-t040'
         return dict(records=[record],csv=csv_text([[filename,label]],['file_id','prediction']))
     if component == 'door':
         from selected_model import validate_frame,predict_frame,extract,COLUMNS
