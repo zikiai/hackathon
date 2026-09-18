@@ -2,7 +2,8 @@ import { loadEvaluationResults, renderModelEvidence } from './model-evidence.js'
 import { predictionDownloads } from './prediction-downloads.js';
 import * as rail from './components/rail/index.js';
 import * as door from './components/door/index.js';
-import * as acv from './components/acv/index.js';
+import * as acv from './components/acv/index.js?v=acv-integrated-1';
+import {getResult as getAcvResult} from './components/acv/upload.js';
 import * as shm from './components/shm/index.js';
 const components={rail,door,acv,shm};
 const modules=Object.fromEntries(Object.entries(components).map(([key,value])=>[key,value.config]));
@@ -37,5 +38,37 @@ function download(kind){
 function render(){root.style.setProperty('--nx-radius',design.corners+'px');root.classList.toggle('nx-compact',design.density==='Compact');root.querySelectorAll('[data-page]').forEach(b=>{if(b.dataset.page===state.page)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});content.innerHTML=state.page==='review'?review():state.page==='analyze'?analyze():state.page==='learning'?learning():method();}
 root.addEventListener('click',async e=>{const b=e.target.closest('button');if(!b)return;state.message='';if(b.dataset.page||b.dataset.go){state.page=b.dataset.page||b.dataset.go;if(state.page==='method')await loadEvaluationResults();}else if(b.dataset.module){state.module=b.dataset.module;state.normal=false;state.exportPreview=null;}else if(b.dataset.evidenceRecord){state.selected={...(state.selected||{}),[state.module]:b.dataset.evidenceRecord};}else if(b.dataset.record)state.normal=b.dataset.record==='normal';else if(b.hasAttribute('data-review')){state.reviewed[key()]=!state.reviewed[key()];state.message=state.reviewed[key()]?'Review recorded in this preview.':'Review reopened.';}else if(b.hasAttribute('data-feedback')){const note=(state.notes[key()]||'').trim();if(!note)state.message='Add a review note before collecting improvement feedback.';else{state.feedback[key()]={module:state.module,file:state.normal?'rail-example-02.csv':modules[state.module].file,note};state.message='Added to AI improvement → Awaiting verification. No model or code was changed.';}}else if(b.hasAttribute('data-export'))state.exportOpen=!state.exportOpen;else if(b.hasAttribute('data-close-export'))state.exportOpen=false;else if(b.dataset.download)download(b.dataset.download);else return;render();save();});
 root.addEventListener('change',e=>{if(e.target.id==='nx-upload'){const files=Array.from(e.target.files||[]);const status=root.querySelector('#nx-upload-status');status.textContent=files.length?files.map(f=>f.name).join(', ')+' — selected locally; not processed.':'No record selected.';return;}if(e.target.id==='nx-module'){state.module=e.target.value;state.normal=false;render();save();}});root.addEventListener('input',e=>{if(e.target.id==='nx-note')state.notes[key()]=e.target.value;});
+// Component-only integration: preserve the shared shell and all other workflows.
+const sharedReview = review, sharedAnalyze = analyze;
+review = function () {
+  if (state.module !== 'acv' || acv.getRecords().length) return sharedReview();
+  return title('Operations / Review','Know what needs a closer look.','Inspect the statistics, plan the check, and record your review.')+
+    `<div class="nx-toolbar">${action('New analysis','data-go="analyze"',true)}</div>`+cards()+
+    '<section class="nx-detail"><h2>Air conditioning</h2><p>No recording analysed yet. Upload an Excel record in New analysis to generate car rankings and supporting evidence.</p></section>';
+};
+analyze = function () {
+  if (state.module !== 'acv') return sharedAnalyze();
+  return title('Analysis / New','Start with a record.','Upload an Excel record to compare cooling performance.')+
+    '<div class="nx-flow"><b>01 Choose component</b><span>02 Upload record</span><span>03 Generate predictions</span></div>'+
+    `<label for="nx-module">Component</label><select id="nx-module">${Object.entries(modules).map(([k,v])=>`<option value="${k}" ${state.module===k?'selected':''}>${v.name}</option>`).join('')}</select>`+
+    acv.renderWorkspace();
+};
+document.addEventListener('acv-analysis-complete', () => {
+  const result = getAcvResult();
+  if (!result) return;
+  if (predictionDownloads.acv) URL.revokeObjectURL(predictionDownloads.acv.url);
+  predictionDownloads.acv = {filename:'acv_predictions.csv', count:result.cases.length, unit:'recordings',
+    url:URL.createObjectURL(new Blob([result.csv],{type:'text/csv;charset=utf-8'}))};
+  state.module='acv'; state.page='review'; state.exportOpen=false;
+  state.selected={...(state.selected||{}),acv:result.cases[0].file_id};
+  render();
+});
+document.addEventListener('acv-analysis-cleared', () => {
+  if (predictionDownloads.acv) URL.revokeObjectURL(predictionDownloads.acv.url);
+  delete predictionDownloads.acv;
+  for (const entries of [state.notes,state.reviewed]) {
+    for (const id of Object.keys(entries)) if (id.startsWith('acv:')) delete entries[id];
+  }
+});
 render();
 loadEvaluationResults().then(()=>{if(state.page==='method')render();});
