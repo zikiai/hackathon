@@ -8,7 +8,8 @@ four saved prediction pipelines. No training is performed on uploads.
 - Region: `asia-southeast1`
 - Service: `nebulax-workspace`
 - Public URL: https://nebulax-workspace-1029817906638.asia-southeast1.run.app
-- Active revision: `nebulax-workspace-00003-m64`
+- Active revision: `nebulax-workspace-00005-ner` (100% traffic)
+- Runtime source commit: `133d46631d8f02bc3703812c6a7b5af783beb0db`
 - Resources: 2 CPUs, 4 GiB RAM, 0–2 instances, request concurrency 8,
   one inference at a time per instance, 900-second request timeout.
 - Runtime identity: `nebulax-backend@qwiklabs-gcp-00-27def4c41cb8.iam.gserviceaccount.com`
@@ -91,3 +92,12 @@ app endpoint: 68 Rail files, Door Test.csv (38 movements), one ACV workbook and
 tolerance). Archive validation checks exact headers, complete file coverage,
 allowed labels, Door intervals, ACV car IDs and finite SHM values. The manifest
 is included in the rookies submission package, outside predictions.zip.
+
+The selected shared-side Rail release was subsequently staged and verified
+against all 86 official inputs. All four cloud-generated CSVs exactly matched
+the selected submission hashes, including 68 Rail predictions. After switching
+100% of traffic to revision `00005-ner`, the public URL passed checks for the
+model fingerprint, complete dashboard records, all four downloadable CSVs,
+real multipart Rail upload, Firestore result reload, cross-visitor denial and
+private-file denial. Door, ACV and SHM predictions are unchanged. The previous
+revision remains available for rollback; no storage/database access was widened.
