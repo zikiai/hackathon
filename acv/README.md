@@ -59,6 +59,30 @@ acv_case_01.xlsx,01|02|03|04|07|05|06|08
 
 The CLI preserves exact source filenames and header car IDs, and writes only `file_id,ranked_cars`, with pipe-separated car IDs and no index column. Existing destination CSVs are overwritten on success. All input files are scored before writing begins; invalid files abort the batch rather than being skipped.
 
+## Standalone ACV screen
+
+From the repository root, install the app dependencies and launch:
+
+```bash
+acv/.venv/bin/python -m pip install -r acv/requirements-app.txt
+acv/.venv/bin/python -m streamlit run acv/app.py
+```
+
+Upload original Excel cases, select **Analyse cars**, review the inspection order,
+select a car to view raw indoor/control temperatures, and download
+`acv_predictions.csv`. The app calls the existing baseline; it does not change
+the ranking rule. Missing evidence and provisional mappings are displayed.
+Changing uploads clears previous results. Invalid batches produce no download.
+Temporary uploaded files are removed after processing; results remain in the
+browser session. Chart readings include all operating modes, while scoring uses
+the baseline's eligibility filters. Processing currently reads workbooks more
+than once, so large batches may take several minutes.
+
+This screen has been written but not launched or runtime-tested yet. Start with
+one training case and check the displayed ranking and downloaded CSV against
+your earlier CLI output before using it for the final submission. Integration
+into the shared app remains separate work.
+
 ## Fixed algorithm and app integration
 
 - Rule version: original-positive-gap-v1. Score is mean max(indoor minus cooling control, 0), including zero gaps in the denominator.
